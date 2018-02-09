@@ -1,10 +1,10 @@
-import { WiezenPage } from './app.po';
+import { AppPage } from './app.po';
 
 describe('wiezen App', () => {
-  let page: WiezenPage;
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new WiezenPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {
