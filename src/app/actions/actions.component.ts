@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PassingScoreModalComponent} from '../score-modals/passing-score-modal/passing-score-modal.component';
 
 @Component({
   selector: 'app-actions',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+
+  public openPassing() {
+    const modalRef = this.modalService.open(PassingScoreModalComponent);
   }
 
 }

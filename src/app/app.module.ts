@@ -10,6 +10,8 @@ import {PlayerService} from './player.service';
 import {FormsModule} from '@angular/forms';
 import { ActionsComponent } from './actions/actions.component';
 import { ScoreGraphComponent } from './score-graph/score-graph.component';
+import {GameService} from './game.service';
+import { PassingScoreModalComponent } from './score-modals/passing-score-modal/passing-score-modal.component';
 
 
 @NgModule({
@@ -18,15 +20,16 @@ import { ScoreGraphComponent } from './score-graph/score-graph.component';
     NavigationComponent,
     ChangePlayersModalComponent,
     ActionsComponent,
-    ScoreGraphComponent
+    ScoreGraphComponent,
+    PassingScoreModalComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule
   ],
-  providers: [PlayerService],
+  providers: [PlayerService, GameService],
   bootstrap: [AppComponent],
-  entryComponents: [ChangePlayersModalComponent]
+  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent]
 })
 export class AppModule { }
