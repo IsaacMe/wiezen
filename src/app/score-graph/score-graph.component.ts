@@ -52,6 +52,7 @@ export class ScoreGraphComponent implements OnInit {
   private updateData(): void {
     this.datasets = this.getCumulativeChartData();
     this.labels = this.getLabels();
+    console.log(this.datasets);
   }
 
   private getCumulativeChartData() {

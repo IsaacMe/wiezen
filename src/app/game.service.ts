@@ -9,7 +9,7 @@ export class GameService {
   private _scoreTable: ScoreTable;
 
   constructor() {
-    this._scoreTable = new ScoreTable();
+    this.generateNewScoreTable();
     this._scoreTable.addEntry(new Scores(1, -1, 1, -1), GameTypes.Abondance9);
     this._scoreTable.addEntry(new Scores(-0.5, -1, 0.5, -1), GameTypes.Abondance9);
     this._scoreTable.addEntry(new Scores(-0.5, -1, 0.5, -1), GameTypes.Abondance9);
@@ -17,5 +17,10 @@ export class GameService {
 
   get scoreTable(): ScoreTable {
     return this._scoreTable;
+  }
+
+  private generateNewScoreTable(): void {
+    this._scoreTable = new ScoreTable();
+    this._scoreTable.addEntry(new Scores(0, 0, 0, 0), GameTypes.Other);
   }
 }

@@ -10,5 +10,6 @@ export enum GameTypes {
   Trull,
   OpenMisery,
   Solo,
-  SoloSlim
+  SoloSlim,
+  Other
 }

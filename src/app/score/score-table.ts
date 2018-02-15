@@ -34,12 +34,19 @@ export class ScoreTable {
    */
   public getCumulativeTable(): number[][] {
     function sumArrs(arr1, arr2): number[] {
-      return arr1.map((num, idx) => num + arr2[idx]);
+      if (!arr2)
+        return arr1;
+      else if (!arr1)
+        return arr2;
+      else if (arr2.length == arr1.length)
+        return arr1.map((num, idx) => num + arr2[idx]);
+      else
+        return arr2;
     }
 
     const cummer = (acc: number[][], curr: number[]): number[][] => acc.concat([sumArrs(acc[acc.length - 1], curr)]);
 
-    const start: number[][] = [[0, 0, 0, 0]];
+    const start: number[][] = [];
     return this.entries.map(entry => entry.scores.getArray()).reduce(cummer, start);
   }
 
