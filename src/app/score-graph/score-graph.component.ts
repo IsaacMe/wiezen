@@ -12,7 +12,7 @@ export class ScoreGraphComponent implements OnInit {
   @ViewChild("chart") private chartElem : ElementRef;
   private chart: Chart;
   private datasets;
-  private colors = [];
+  private colors = ["rgb(52, 152, 219)", "rgb(231, 76, 60)", "rgb(46, 204, 113)", "rgb(241, 196, 15)"];
   private labels: string[];
   private numOfGames = 0;
 
@@ -57,7 +57,9 @@ export class ScoreGraphComponent implements OnInit {
   private getCumulativeChartData() {
     return this.game.scoreTable.getCumulativePlayers().map((val, index) => ({
       label: 'Speler ' + (index + 1),
-      data: val
+      data: val,
+      borderColor: this.colors[index],
+      backgroundColor: this.colors[index]
     }));
   }
 
@@ -65,8 +67,4 @@ export class ScoreGraphComponent implements OnInit {
     return Array.from({length: this.numOfGames}, (v, k) => 'Ronde ' + k);
   }
 
-
-  data() {
-    return this.game.scoreTable.getCumulativePlayers().map((val) => ({data: val}))
-  }
 }
