@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Chart} from 'chart.js';
 import {GameService} from '../game.service';
+import {PlayerService} from '../player.service';
 
 @Component({
   selector: 'app-score-graph',
@@ -16,7 +17,7 @@ export class ScoreGraphComponent implements OnInit {
   private labels: string[];
   private numOfGames = 0;
 
-  constructor(protected game: GameService) {
+  constructor(protected game: GameService, private player: PlayerService) {
     this.datasets = [];
     this.labels = [];
   }
@@ -57,7 +58,7 @@ export class ScoreGraphComponent implements OnInit {
 
   private getCumulativeChartData() {
     return this.game.scoreTable.getCumulativePlayers().map((val, index) => ({
-      label: 'Speler ' + (index + 1),
+      label: this.player.getPlayerName(index),
       data: val,
       borderColor: this.colors[index],
       backgroundColor: this.colors[index]

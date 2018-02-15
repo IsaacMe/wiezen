@@ -6,7 +6,7 @@ export class PlayerService {
   private players: [string];
 
   constructor() {
-    this.players = ['', '', '', '']
+    this.players = ['Speler 1', 'Speler 2', 'Speler 3', 'Speler 4']
   }
 
   /**
