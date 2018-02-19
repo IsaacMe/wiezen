@@ -15,7 +15,7 @@ export class ActionsComponent implements OnInit {
   }
 
   public openPassing() {
-    const modalRef = this.modalService.open(PassingScoreModalComponent);
+    const modalRef = this.modalService.open(PassingScoreModalComponent, {size: 'lg'});
   }
 
 }

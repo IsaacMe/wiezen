@@ -12,6 +12,7 @@ import { ActionsComponent } from './actions/actions.component';
 import { ScoreGraphComponent } from './score-graph/score-graph.component';
 import {GameService} from './game.service';
 import { PassingScoreModalComponent } from './score-modals/passing-score-modal/passing-score-modal.component';
+import { ScoreInputComponent } from './inputs/score-input/score-input.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PassingScoreModalComponent } from './score-modals/passing-score-modal/p
     ChangePlayersModalComponent,
     ActionsComponent,
     ScoreGraphComponent,
-    PassingScoreModalComponent
+    PassingScoreModalComponent,
+    ScoreInputComponent
   ],
   imports: [
     BrowserModule,

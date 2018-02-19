@@ -5,6 +5,8 @@
   </button>
 </div>
 <div class="modal-body">
+  <app-score-input *ngFor="let player of players; let i = index" [title]="player" [(score)]="scores[i]"></app-score-input>
+  {{scores}}
   <button type="button" class="btn btn-outline-dark" (click)="add()">Add</button>
 </div>
 <div class="modal-footer">

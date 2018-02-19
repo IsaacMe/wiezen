@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PlayerService {
 
-  private players: [string];
+  private players: string[];
 
   constructor() {
     this.players = ['Speler 1', 'Speler 2', 'Speler 3', 'Speler 4']
@@ -40,6 +40,10 @@ export class PlayerService {
    */
   public getNumberOfPlayers(): number {
     return 4;
+  }
+
+  public getPlayers(): string[] {
+    return this.players;
   }
 
 }
