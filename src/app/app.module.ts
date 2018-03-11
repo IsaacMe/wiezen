@@ -13,6 +13,8 @@ import { ScoreGraphComponent } from './score-graph/score-graph.component';
 import {GameService} from './game.service';
 import { PassingScoreModalComponent } from './score-modals/passing-score-modal/passing-score-modal.component';
 import { ScoreInputComponent } from './inputs/score-input/score-input.component';
+import {PointsService} from './points.service';
+import {ScoreCalculatorService} from './score-calculator.service';
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import { ScoreInputComponent } from './inputs/score-input/score-input.component'
     NgbModule.forRoot(),
     FormsModule
   ],
-  providers: [PlayerService, GameService],
+  providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
   bootstrap: [AppComponent],
   entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent]
 })

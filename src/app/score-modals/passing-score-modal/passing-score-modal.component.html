@@ -6,9 +6,14 @@
 </div>
 <div class="modal-body">
   <app-score-input *ngFor="let player of players; let i = index" [title]="player" [(score)]="scores[i]"></app-score-input>
-  {{scores}}
-  <button type="button" class="btn btn-outline-dark" (click)="add()">Add</button>
+  <div *ngIf="scoreSum() != 13" class="alert alert-danger" role="alert">
+    <strong>Totaal: </strong> {{scoreSum()}}
+  </div>
+  <div *ngIf="scoreSum() == 13" class="alert alert-success" role="alert">
+    <strong>Totaal: </strong> {{scoreSum()}}
+  </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Sluit</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Sluit</button>
+  <button type="button" class="btn btn-primary" [disabled]="scoreSum() != 13" (click)="addAndClose()">Voeg toe</button>
 </div>
