@@ -15,6 +15,9 @@ import { PassingScoreModalComponent } from './score-modals/passing-score-modal/p
 import { ScoreInputComponent } from './inputs/score-input/score-input.component';
 import {PointsService} from './points.service';
 import {ScoreCalculatorService} from './score-calculator.service';
+import { AbondanceScoreModalComponent } from './score-modals/abondance-score-modal/abondance-score-modal.component';
+import { PlayerInputComponent } from './inputs/player-input/player-input.component';
+import { WinLoseInputComponent } from './inputs/win-lose-input/win-lose-input.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import {ScoreCalculatorService} from './score-calculator.service';
     ActionsComponent,
     ScoreGraphComponent,
     PassingScoreModalComponent,
-    ScoreInputComponent
+    ScoreInputComponent,
+    AbondanceScoreModalComponent,
+    PlayerInputComponent,
+    WinLoseInputComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +40,6 @@ import {ScoreCalculatorService} from './score-calculator.service';
   ],
   providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
   bootstrap: [AppComponent],
-  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent]
+  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent, AbondanceScoreModalComponent]
 })
 export class AppModule { }

@@ -13,6 +13,7 @@ export class ScoreInputComponent implements OnInit {
   @Output() scoreChange = new EventEmitter();
 
   @Input() title: string;
+  @Input() positiveScore: number;
 
   @Input()
   get score(): number {

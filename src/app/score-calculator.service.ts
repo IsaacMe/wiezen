@@ -21,4 +21,22 @@ export class ScoreCalculatorService {
     return scores;
   }
 
+  public calcAbondance(player: number, won: boolean, type: GameTypes): Scores {
+    if (player < 1 || player > 4) {
+      throw "Invalid number of player";
+    }
+
+    let pts = this.points.getPoints(type);
+    let scores = new Scores(0, 0, 0, 0);
+    let baseScore = pts.base;
+    if (!won) baseScore *= -1;
+
+    for (let i = 1; i <= 4; i++) {
+      if (i == player) scores.setScore(i, 3 * baseScore);
+      else scores.setScore(i, -1 * baseScore);
+    }
+
+    return scores;
+  }
+
 }
