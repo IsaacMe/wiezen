@@ -11,7 +11,7 @@ import {GameTypes} from '../../score/game-types.enum';
 })
 export class AbondanceScoreModalComponent implements OnInit {
 
-  @Input() level: number;
+  @Input() gameType: GameTypes;
   protected win: boolean;
   protected player: number;
 
@@ -21,16 +21,18 @@ export class AbondanceScoreModalComponent implements OnInit {
   }
 
   public addAndClose() {
-    this.gameService.scoreTable.addEntry(this.scoreCalc.calcAbondance(this.player, this.win, this.gameType()), this.gameType());
+    this.gameService.scoreTable.addEntry(this.scoreCalc.calcAbondance(this.player, this.win, this.gameType), this.gameType);
     this.activeModal.close('Saved');
   }
 
-  private gameType(): GameTypes {
-    if (this.level == 9) return GameTypes.Abondance9;
-    else if (this.level == 10) return GameTypes.Abondance10;
-    else if (this.level == 11) return GameTypes.Abondance11;
-    else if (this.level == 12) return GameTypes.Abondance12;
-    else throw 'Invalid abondance level';
+  get gameName(): string {
+    if (this.gameType == GameTypes.Abondance9) return 'Abondance 9';
+    else if (this.gameType == GameTypes.Abondance10) return 'Abondance 10';
+    else if (this.gameType == GameTypes.Abondance11) return 'Abondance 11';
+    else if (this.gameType == GameTypes.Abondance12) return 'Abondance 12';
+    else if (this.gameType == GameTypes.Solo) return 'Solo';
+    else if (this.gameType == GameTypes.SoloSlim) return 'Solo slim';
+    else throw 'Invalid abondance game';
   }
 
 }
