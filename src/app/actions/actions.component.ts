@@ -4,6 +4,7 @@ import {PassingScoreModalComponent} from '../score-modals/passing-score-modal/pa
 import {AbondanceScoreModalComponent} from '../score-modals/abondance-score-modal/abondance-score-modal.component';
 import {GameTypes} from '../score/game-types.enum';
 import {AskingAndJoiningScoreModalComponent} from '../score-modals/asking-and-joining-score-modal/asking-and-joining-score-modal.component';
+import {AloneScoreModalComponent} from '../score-modals/alone-score-modal/alone-score-modal.component';
 
 @Component({
   selector: 'app-actions',
@@ -36,6 +37,10 @@ export class ActionsComponent implements OnInit {
   public openTrull() {
     const modalRef = this.modalService.open(AskingAndJoiningScoreModalComponent, {size: 'lg'});
     modalRef.componentInstance.gameType = GameTypes.Trull;
+  }
+
+  public openAlone() {
+    const modalRef = this.modalService.open(AloneScoreModalComponent, {size: 'lg'});
   }
 
 }

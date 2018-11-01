@@ -57,6 +57,28 @@ export class ScoreCalculatorService {
       else scores.setScore(i, -1 * baseScore);
     }
 
+    return scores;
+  }
+
+  public calcAlone(player: number, tricks: number): Scores {
+    let scores = new Scores(0, 0, 0, 0);
+    let pts = this.points.getPoints(GameTypes.Alone);
+    let baseScore = pts.base;
+
+    if (tricks == 13) {
+      baseScore += (tricks - pts.tricks) * pts.extra;
+      baseScore *= 2;
+    } else if (tricks >= pts.tricks) {
+      baseScore += (tricks - pts.tricks) * pts.extra;
+    } else {
+      baseScore *= -1;
+      baseScore += (tricks - pts.tricks) * pts.extra;
+    }
+
+    for (let i = 1; i <= 4; i++) {
+      if (i == player) scores.setScore(i, 3 * baseScore);
+      else scores.setScore(i, -1 * baseScore);
+    }
 
     return scores;
   }
