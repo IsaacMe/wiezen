@@ -18,6 +18,7 @@ import {ScoreCalculatorService} from './score-calculator.service';
 import { AbondanceScoreModalComponent } from './score-modals/abondance-score-modal/abondance-score-modal.component';
 import { PlayerInputComponent } from './inputs/player-input/player-input.component';
 import { WinLoseInputComponent } from './inputs/win-lose-input/win-lose-input.component';
+import { AskingAndJoiningScoreModalComponent } from './score-modals/asking-and-joining-score-modal/asking-and-joining-score-modal.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { WinLoseInputComponent } from './inputs/win-lose-input/win-lose-input.co
     ScoreInputComponent,
     AbondanceScoreModalComponent,
     PlayerInputComponent,
-    WinLoseInputComponent
+    WinLoseInputComponent,
+    AskingAndJoiningScoreModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,6 @@ import { WinLoseInputComponent } from './inputs/win-lose-input/win-lose-input.co
   ],
   providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
   bootstrap: [AppComponent],
-  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent, AbondanceScoreModalComponent]
+  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent, AbondanceScoreModalComponent, AskingAndJoiningScoreModalComponent]
 })
 export class AppModule { }

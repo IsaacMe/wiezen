@@ -16,6 +16,7 @@ export class PlayerInputComponent implements OnInit {
   }
 
   @Input() title: string;
+  @Input() disablePlayer: number;
   @Input()
   get player(): number {
     return this.selectedPlayer;

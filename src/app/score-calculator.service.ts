@@ -39,4 +39,26 @@ export class ScoreCalculatorService {
     return scores;
   }
 
+  public calcAskingAndJoining(player1: number, player2: number, tricks: number, type: GameTypes): Scores {
+    let scores = new Scores(0, 0, 0, 0);
+    let pts = this.points.getPoints(type);
+    let baseScore = pts.base;
+    if (tricks == 13) {
+      baseScore += 8 * pts.extra;
+    } else if (tricks >= pts.tricks) {
+      baseScore += (tricks - pts.tricks) * pts.extra;
+    } else {
+      baseScore *= -1;
+      baseScore += (tricks - pts.tricks) * pts.extra;
+    }
+
+    for (let i = 1; i <= 4; i++) {
+      if (i == player1 || i == player2) scores.setScore(i, baseScore);
+      else scores.setScore(i, -1 * baseScore);
+    }
+
+
+    return scores;
+  }
+
 }

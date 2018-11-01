@@ -2,7 +2,7 @@
   <label class="col-sm-2 col-form-label">{{title}}</label>
   <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="player">
     <label *ngFor="let item of players.getPlayers(); let i = index;" ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" [value]="i + 1">{{item}}
+      <input ngbButton type="radio" [value]="i + 1" [disabled]="disablePlayer == i + 1">{{item}}
     </label>
   </div>
 </div>
