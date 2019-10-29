@@ -18,8 +18,11 @@ import {ScoreCalculatorService} from './score-calculator.service';
 import { AbondanceScoreModalComponent } from './score-modals/abondance-score-modal/abondance-score-modal.component';
 import { PlayerInputComponent } from './inputs/player-input/player-input.component';
 import { WinLoseInputComponent } from './inputs/win-lose-input/win-lose-input.component';
+// tslint:disable-next-line:max-line-length
 import { AskingAndJoiningScoreModalComponent } from './score-modals/asking-and-joining-score-modal/asking-and-joining-score-modal.component';
 import { AloneScoreModalComponent } from './score-modals/alone-score-modal/alone-score-modal.component';
+import { MiseryScoreModalComponent } from './score-modals/misery-score-modal/misery-score-modal.component';
+import { WinLoseDnpInputComponent } from './inputs/win-lose-dnp-input/win-lose-dnp-input.component';
 
 
 @NgModule({
@@ -34,8 +37,10 @@ import { AloneScoreModalComponent } from './score-modals/alone-score-modal/alone
     AbondanceScoreModalComponent,
     PlayerInputComponent,
     WinLoseInputComponent,
+    WinLoseDnpInputComponent,
     AskingAndJoiningScoreModalComponent,
-    AloneScoreModalComponent
+    AloneScoreModalComponent,
+    MiseryScoreModalComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ import { AloneScoreModalComponent } from './score-modals/alone-score-modal/alone
   ],
   providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
   bootstrap: [AppComponent],
-  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent, AbondanceScoreModalComponent, AskingAndJoiningScoreModalComponent, AloneScoreModalComponent]
+  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent, AbondanceScoreModalComponent,
+    AskingAndJoiningScoreModalComponent, AloneScoreModalComponent, MiseryScoreModalComponent]
 })
 export class AppModule { }

@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label class="col-sm-2 col-form-label">{{title}}</label>
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="win">
+    <label ngbButtonLabel class="btn-secondary">
+      <input ngbButton type="radio" [value]="WinLoseDnp.DidNotPlay"> Niet gespeeld
+    </label>
+    <label ngbButtonLabel class="btn-success">
+      <input ngbButton type="radio" [value]="WinLoseDnp.Win"> Winst
+    </label>
+    <label ngbButtonLabel class="btn-danger">
+      <input ngbButton type="radio" [value]="WinLoseDnp.Lose"> Verlies
+    </label>
+  </div>
+</div>
