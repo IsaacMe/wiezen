@@ -26,13 +26,21 @@ export class AbondanceScoreModalComponent implements OnInit {
   }
 
   get gameName(): string {
-    if (this.gameType == GameTypes.Abondance9) return 'Abondance 9';
-    else if (this.gameType == GameTypes.Abondance10) return 'Abondance 10';
-    else if (this.gameType == GameTypes.Abondance11) return 'Abondance 11';
-    else if (this.gameType == GameTypes.Abondance12) return 'Abondance 12';
-    else if (this.gameType == GameTypes.Solo) return 'Solo';
-    else if (this.gameType == GameTypes.SoloSlim) return 'Solo slim';
-    else throw 'Invalid abondance game';
+    if (this.gameType === GameTypes.Abondance9) {
+      return 'Abondance 9';
+    } else if (this.gameType === GameTypes.Abondance10) {
+      return 'Abondance 10';
+    } else if (this.gameType === GameTypes.Abondance11) {
+      return 'Abondance 11';
+    } else if (this.gameType === GameTypes.Abondance12) {
+      return 'Abondance 12';
+    } else if (this.gameType === GameTypes.Solo) {
+      return 'Solo';
+    } else if (this.gameType === GameTypes.SoloSlim) {
+      return 'Solo slim';
+    } else {
+      throw new Error('Invalid abondance game');
+    }
   }
 
 }

@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class WinLoseInputComponent implements OnInit {
 
   @Input() title: string;
-  private winValue : boolean;
+  private winValue: boolean;
 
   @Output() winChange = new EventEmitter();
 

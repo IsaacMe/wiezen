@@ -17,21 +17,27 @@ export class AskingAndJoiningScoreModalComponent implements OnInit {
   protected player2: number;
   protected tricks: number;
 
-  constructor(protected activeModal: NgbActiveModal, protected points: PointsService, private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
+  constructor(protected activeModal: NgbActiveModal, protected points: PointsService,
+    private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
 
   ngOnInit() {
   }
 
   public addAndClose() {
-    this.gameService.scoreTable.addEntry(this.scoreCalc.calcAskingAndJoining(this.player1, this.player2, this.tricks, this.gameType), this.gameType);
+    this.gameService.scoreTable.addEntry(
+      this.scoreCalc.calcAskingAndJoining(this.player1, this.player2, this.tricks, this.gameType), this.gameType);
     this.activeModal.close('Saved');
   }
 
 
   get gameName(): string {
-    if (this.gameType == GameTypes.AskingAndJoining) return 'Vraag en mee';
-    else if (this.gameType == GameTypes.Trull) return 'Troel';
-    else throw 'Invalid Asking and joining game';
+    if (this.gameType === GameTypes.AskingAndJoining) {
+      return 'Vraag en mee';
+    } else if (this.gameType === GameTypes.Trull) {
+      return 'Troel';
+    } else {
+      throw new Error('Invalid Asking and joining game');
+    }
   }
 
 }

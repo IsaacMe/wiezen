@@ -16,7 +16,8 @@ export class AloneScoreModalComponent implements OnInit {
   protected tricks: number;
   protected gameType: GameTypes = GameTypes.Alone;
 
-  constructor(protected activeModal: NgbActiveModal, protected points: PointsService, private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
+  constructor(protected activeModal: NgbActiveModal, protected points: PointsService,
+    private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
 
   ngOnInit() {
   }

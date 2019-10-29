@@ -10,9 +10,9 @@ export class GameService {
 
   constructor() {
     this.generateNewScoreTable();
-    //this._scoreTable.addEntry(new Scores(1, -1, 1, -1), GameTypes.Abondance9);
-    //this._scoreTable.addEntry(new Scores(-0.5, -1, 0.5, -1), GameTypes.Abondance9);
-    //this._scoreTable.addEntry(new Scores(-0.5, -1, 0.5, -1), GameTypes.Abondance9);
+    // this._scoreTable.addEntry(new Scores(1, -1, 1, -1), GameTypes.Abondance9);
+    // this._scoreTable.addEntry(new Scores(-0.5, -1, 0.5, -1), GameTypes.Abondance9);
+    // this._scoreTable.addEntry(new Scores(-0.5, -1, 0.5, -1), GameTypes.Abondance9);
   }
 
   get scoreTable(): ScoreTable {

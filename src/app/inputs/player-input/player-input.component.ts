@@ -8,20 +8,21 @@ import {PlayerService} from '../../player.service';
 })
 export class PlayerInputComponent implements OnInit {
 
-  private selectedPlayer : number;
+  @Input() title: string;
+  @Input() disablePlayer: number;
+  @Output() playerChange = new EventEmitter();
+
+  private selectedPlayer: number;
 
   constructor(protected players: PlayerService) { }
 
   ngOnInit() {
   }
 
-  @Input() title: string;
-  @Input() disablePlayer: number;
   @Input()
   get player(): number {
     return this.selectedPlayer;
   }
-  @Output() playerChange = new EventEmitter();
 
   set player(val: number) {
     this.selectedPlayer = val;
