@@ -18,6 +18,10 @@ export class ScoreTable {
     return scores.reduce(summer);
   }
 
+  public getLastScores(): number[] {
+    return this.entries[this.entries.length - 1].scores.getArray();
+  }
+
   public addEntry(scores: Scores, type: GameTypes): void {
     this.entries.push(new ScoreEntry(scores, type, this.entries.length));
     this.size.next(this.entries.length);
@@ -34,14 +38,15 @@ export class ScoreTable {
    */
   public getCumulativeTable(): number[][] {
     function sumArrs(arr1, arr2): number[] {
-      if (!arr2)
+      if (!arr2) {
         return arr1;
-      else if (!arr1)
+      } else if (!arr1) {
         return arr2;
-      else if (arr2.length == arr1.length)
+      } else if (arr2.length === arr1.length) {
         return arr1.map((num, idx) => num + arr2[idx]);
-      else
+      } else {
         return arr2;
+      }
     }
 
     const cummer = (acc: number[][], curr: number[]): number[][] => acc.concat([sumArrs(acc[acc.length - 1], curr)]);
@@ -61,11 +66,11 @@ export class ScoreTable {
 
   [Symbol.iterator](): Iterator<ScoreEntry> {
     let index = -1;
-    let data  = this.entries;
+    const data  = this.entries;
 
     return {
       next: () => ({ value: data[++index], done: !(index in data) })
     };
-  };
+  }
 
 }

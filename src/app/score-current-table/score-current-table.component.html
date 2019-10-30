@@ -1,0 +1,15 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let item of players.getPlayers(); let i = index;" scope="col">{{item}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let score of getTotalScores();">{{score}}</td>
+      </tr>
+      <tr>
+        <td *ngFor="let score of getLastScores();">{{score}}</td>
+        </tr>
+    </tbody>
+  </table>
