@@ -4,9 +4,33 @@ import { Injectable } from '@angular/core';
 export class PlayerService {
 
   private players: string[];
+  private localStorageKey = 'players';
 
   constructor() {
-    this.players = ['Speler 1', 'Speler 2', 'Speler 3', 'Speler 4']
+    if (!localStorage.getItem('players')) {
+      this.initDefaultPlayers();
+    } else {
+      try {
+        const storagePlayers = JSON.parse(localStorage.getItem(this.localStorageKey));
+        if (storagePlayers instanceof Array && storagePlayers.length === 4) {
+          this.players = [];
+          for (const storagePlayer of storagePlayers) {
+            this.players.push(storagePlayer.toString());
+          }
+        } else {
+          throw new SyntaxError('Players not of type array');
+        }
+
+      } catch (e) {
+        if (e instanceof SyntaxError) {
+          this.initDefaultPlayers();
+        } else {
+          throw e;
+        }
+      }
+
+
+    }
   }
 
   /**
@@ -29,8 +53,8 @@ export class PlayerService {
    */
   public setPlayerName(num: number, name: string): void {
     if (num >= 0 && num < 4) {
-      console.log("change");
       this.players[num] = name;
+      localStorage.setItem(this.localStorageKey, JSON.stringify(this.players));
     }
   }
 
@@ -44,6 +68,11 @@ export class PlayerService {
 
   public getPlayers(): string[] {
     return this.players;
+  }
+
+  private initDefaultPlayers() {
+    this.players = ['Speler 1', 'Speler 2', 'Speler 3', 'Speler 4'];
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.players));
   }
 
 }
