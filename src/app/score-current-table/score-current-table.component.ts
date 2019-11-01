@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { GameService } from '../game.service';
+import Big from 'big.js';
 
 @Component({
   selector: 'app-score-current-table',
@@ -14,11 +15,11 @@ export class ScoreCurrentTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  getTotalScores(): number[] {
+  getTotalScores(): Big[] {
     return this.game.scoreTable.getTotals();
   }
 
-  getLastScores(): number[] {
+  getLastScores(): Big[] {
     return this.game.scoreTable.getLastScores();
   }
 }

@@ -3,6 +3,7 @@ import { Scores } from './score/scores';
 import { PointsService } from './points.service';
 import { GameTypes } from './score/game-types.enum';
 import { PlayerActionEnum } from './score/player-action.enum';
+import Big from 'big.js';
 
 @Injectable()
 export class ScoreCalculatorService {
@@ -11,12 +12,12 @@ export class ScoreCalculatorService {
 
   public calcPassing(tricks: Scores): Scores {
     const pts = this.points.getPoints(GameTypes.Passing);
-    const scores = new Scores(0, 0 , 0, 0);
+    const scores = new Scores();
 
-    const tricksSum = tricks.getArray().reduce((a, b) => a + b, 0);
+    const tricksSum = tricks.getArray().reduce((a, b) => a.plus(b), new Big(0));
 
     for (let i = 0; i < 4; i++) {
-      scores.setScore(i + 1, (tricksSum - 4 * tricks.getScore(i + 1)) * pts.extra);
+      scores.setScore(i + 1, tricksSum.minus(tricks.getScore(i + 1).mul(4)).mul(pts.extra));
     }
 
     return scores;
@@ -28,80 +29,80 @@ export class ScoreCalculatorService {
     }
 
     const pts = this.points.getPoints(type);
-    const scores = new Scores(0, 0, 0, 0);
+    const scores = new Scores();
     let baseScore = pts.base;
-    if (!won) { baseScore *= -1; }
+    if (!won) { baseScore = baseScore.mul(-1); }
 
     for (let i = 1; i <= 4; i++) {
-      if (i === player) { scores.setScore(i, 3 * baseScore); } else { scores.setScore(i, -1 * baseScore); }
+      if (i === player) { scores.setScore(i, baseScore.mul(3)); } else { scores.setScore(i, baseScore.mul(-1)); }
     }
 
     return scores;
   }
 
   public calcAskingAndJoining(player1: number, player2: number, tricks: number, type: GameTypes): Scores {
-    const scores = new Scores(0, 0, 0, 0);
+    const scores = new Scores();
     const pts = this.points.getPoints(type);
     let baseScore = pts.base;
     if (tricks === 13) {
-      baseScore += 8 * pts.extra;
+      baseScore = baseScore.plus(pts.extra.times(8));
     } else if (tricks >= pts.tricks) {
-      baseScore += (tricks - pts.tricks) * pts.extra;
+      baseScore = baseScore.plus(pts.extra.mul(tricks - pts.tricks));
     } else {
-      baseScore *= -1;
-      baseScore += (tricks - pts.tricks) * pts.extra;
+      baseScore = baseScore.mul(-1);
+      baseScore = baseScore.plus(pts.extra.mul(tricks - pts.tricks));
     }
 
     for (let i = 1; i <= 4; i++) {
-      if (i === player1 || i === player2) { scores.setScore(i, baseScore); } else { scores.setScore(i, -1 * baseScore); }
+      if (i === player1 || i === player2) { scores.setScore(i, baseScore); } else { scores.setScore(i, baseScore.mul(-1)); }
     }
 
     return scores;
   }
 
   public calcAlone(player: number, tricks: number): Scores {
-    const scores = new Scores(0, 0, 0, 0);
+    const scores = new Scores();
     const pts = this.points.getPoints(GameTypes.Alone);
     let baseScore = pts.base;
 
     if (tricks === 13) {
-      baseScore += (tricks - pts.tricks) * pts.extra;
-      baseScore *= 2;
+      baseScore = baseScore.plus(pts.extra.mul(tricks - pts.tricks));
+      baseScore = baseScore.mul(2);
     } else if (tricks >= pts.tricks) {
-      baseScore += (tricks - pts.tricks) * pts.extra;
+      baseScore = baseScore.plus(pts.extra.mul(tricks - pts.tricks));
     } else {
-      baseScore *= -1;
-      baseScore += (tricks - pts.tricks) * pts.extra;
+      baseScore = baseScore.mul(-1);
+      baseScore = baseScore.plus(pts.extra.mul(tricks - pts.tricks));
     }
 
     for (let i = 1; i <= 4; i++) {
-      if (i === player) { scores.setScore(i, 3 * baseScore); } else { scores.setScore(i, -1 * baseScore); }
+      if (i === player) { scores.setScore(i, baseScore.mul(3)); } else { scores.setScore(i, baseScore.mul(-1)); }
     }
 
     return scores;
   }
 
   public calcMisery(playerActions: PlayerActionEnum[], type: GameTypes) {
-    const scores = new Scores(0, 0, 0, 0);
+    const scores = new Scores();
     const pts = this.points.getPoints(type);
 
     for (let p = 0; p < playerActions.length; p++) {
-      let current = pts.base * 3;
-      let others = -1 * pts.base;
+      let current = pts.base.mul(3);
+      let others = pts.base.mul(-1);
       const action = playerActions[p];
 
       if (action === PlayerActionEnum.Lose) {
-        current *= -1;
-        others *= -1;
+        current = current.mul(-1);
+        others = others.mul(-1);
       } else if (action === PlayerActionEnum.DidNotPlay) {
         continue;
       }
 
       for (let i = 1; i <= 4; i++) {
         if (i === p + 1) {
-          scores.setScore(i, scores.getScore(i) + current);
+          scores.setScore(i, scores.getScore(i).plus(current));
         } else {
-          scores.setScore(i, scores.getScore(i) + others);
+          scores.setScore(i, scores.getScore(i).plus(others));
         }
       }
     }

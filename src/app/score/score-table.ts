@@ -2,6 +2,7 @@ import {ScoreEntry} from './score-entry';
 import {Scores} from './scores';
 import {GameTypes} from './game-types.enum';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import Big from 'big.js';
 
 export class ScoreTable {
   private entries: ScoreEntry[];
@@ -12,13 +13,12 @@ export class ScoreTable {
     this.size = new BehaviorSubject<number>(0);
   }
 
-  public getTotals(): number[] {
+  public getTotals(): Big[] {
     const scores = this.entries.map(entry => entry.scores.getArray());
-    const summer = (acc, curr) => acc.map((b, i) => curr[i] + b);
-    return scores.reduce(summer);
+    return scores.reduce((acc, curr) => acc.map((b, i) => curr[i].plus(b)));
   }
 
-  public getLastScores(): number[] {
+  public getLastScores(): Big[] {
     return this.entries[this.entries.length - 1].scores.getArray();
   }
 
@@ -34,28 +34,28 @@ export class ScoreTable {
 
   /**
    * Returns a cumulative list of the scores
-   * @returns {[number][]}
+   * @returns {[Big][]}
    */
-  public getCumulativeTable(): number[][] {
-    function sumArrs(arr1, arr2): number[] {
+  public getCumulativeTable(): Big[][] {
+    function sumArrs(arr1: Big[], arr2: Big[]): Big[] {
       if (!arr2) {
         return arr1;
       } else if (!arr1) {
         return arr2;
       } else if (arr2.length === arr1.length) {
-        return arr1.map((num, idx) => num + arr2[idx]);
+        return arr1.map((num, idx) => num.plus(arr2[idx]));
       } else {
         return arr2;
       }
     }
 
-    const cummer = (acc: number[][], curr: number[]): number[][] => acc.concat([sumArrs(acc[acc.length - 1], curr)]);
+    const cummer = (acc: Big[][], curr: Big[]): Big[][] => acc.concat([sumArrs(acc[acc.length - 1], curr)]);
 
-    const start: number[][] = [];
+    const start: Big[][] = [];
     return this.entries.map(entry => entry.scores.getArray()).reduce(cummer, start);
   }
 
-  public getCumulativePlayers(): number[][] {
+  public getCumulativePlayers(): Big[][] {
     const cum = this.getCumulativeTable();
     return cum[0].map((col, i) => cum.map(row => row[i]));
   }

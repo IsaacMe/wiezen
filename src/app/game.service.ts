@@ -21,6 +21,6 @@ export class GameService {
 
   private generateNewScoreTable(): void {
     this._scoreTable = new ScoreTable();
-    this._scoreTable.addEntry(new Scores(0, 0, 0, 0), GameTypes.Other);
+    this._scoreTable.addEntry(new Scores(), GameTypes.Other);
   }
 }

@@ -1,21 +1,42 @@
-export class Scores {
-  player1: number;
-  player2: number;
-  player3: number;
-  player4: number;
+import Big from 'big.js';
 
-  constructor(player1: number, player2: number, player3: number, player4: number) {
-    this.player1 = player1;
-    this.player2 = player2;
-    this.player3 = player3;
-    this.player4 = player4;
+export class Scores {
+  player1: Big;
+  player2: Big;
+  player3: Big;
+  player4: Big;
+
+  constructor(player1?: Big, player2?: Big, player3?: Big, player4?: Big) {
+    if (player1) {
+      this.player1 = player1;
+    } else {
+      this.player1 = new Big(0);
+    }
+
+    if (player2) {
+      this.player2 = player2;
+    } else {
+      this.player2 = new Big(0);
+    }
+
+    if (player3) {
+      this.player3 = player3;
+    } else {
+      this.player3 = new Big(0);
+    }
+
+    if (player4) {
+      this.player4 = player4;
+    } else {
+      this.player4 = new Big(0);
+    }
   }
 
-  public getArray(): number[] {
+  public getArray(): Big[] {
     return [this.player1, this.player2, this.player3, this.player4];
   }
 
-  public setScore(player: number, score: number): void {
+  public setScore(player: number, score: Big): void {
     if (player === 1) {
       this.player1 = score;
     } else if (player === 2) {
@@ -27,7 +48,7 @@ export class Scores {
     }
   }
 
-  public getScore(player: number): number {
+  public getScore(player: number): Big {
     if (player === 1) {
       return this.player1;
     } else if (player === 2) {

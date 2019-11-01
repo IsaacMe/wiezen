@@ -5,6 +5,7 @@ import {Scores} from '../../score/scores';
 import {GameTypes} from '../../score/game-types.enum';
 import {PlayerService} from '../../player.service';
 import {ScoreCalculatorService} from '../../score-calculator.service';
+import Big from 'big.js';
 
 @Component({
   selector: 'app-passing-score-modal',
@@ -13,7 +14,8 @@ import {ScoreCalculatorService} from '../../score-calculator.service';
 })
 export class PassingScoreModalComponent implements OnInit {
 
-  constructor(protected activeModal: NgbActiveModal, private gameService: GameService, private playersService: PlayerService, private scoreCalc: ScoreCalculatorService) { }
+  constructor(protected activeModal: NgbActiveModal, private gameService: GameService,
+    private playersService: PlayerService, private scoreCalc: ScoreCalculatorService) { }
 
   protected scores: number[];
   protected players: string[];
@@ -24,7 +26,7 @@ export class PassingScoreModalComponent implements OnInit {
   }
 
   public addAndClose() {
-    let score = new Scores(this.scores[0], this.scores[1], this.scores[2], this.scores[3]);
+    const score = new Scores(new Big(this.scores[0]), new Big(this.scores[1]), new Big(this.scores[2]), new Big(this.scores[3]));
     this.gameService.scoreTable.addEntry(this.scoreCalc.calcPassing(score), GameTypes.Passing);
     this.activeModal.close('Saved');
   }
