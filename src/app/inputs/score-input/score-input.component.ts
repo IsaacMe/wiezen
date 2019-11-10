@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class ScoreInputComponent implements OnInit {
 
   private scoreValue: number;
-  protected values: number[] = [];
+  public values: number[] = [];
 
   @Output() scoreChange = new EventEmitter();
 

@@ -13,11 +13,11 @@ import {ScoreCalculatorService} from '../../score-calculator.service';
 export class AskingAndJoiningScoreModalComponent implements OnInit {
 
   @Input() gameType: GameTypes;
-  protected player1: number;
-  protected player2: number;
-  protected tricks: number;
+  public player1: number;
+  public player2: number;
+  public tricks: number;
 
-  constructor(protected activeModal: NgbActiveModal, protected points: PointsService,
+  constructor(public activeModal: NgbActiveModal, public points: PointsService,
     private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
 
   ngOnInit() {

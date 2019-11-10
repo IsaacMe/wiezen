@@ -12,10 +12,10 @@ import {GameTypes} from '../../score/game-types.enum';
 export class AbondanceScoreModalComponent implements OnInit {
 
   @Input() gameType: GameTypes;
-  protected win: boolean;
-  protected player: number;
+  public win: boolean;
+  public player: number;
 
-  constructor(protected activeModal: NgbActiveModal, private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
+  constructor(public activeModal: NgbActiveModal, private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
 
   ngOnInit() {
   }

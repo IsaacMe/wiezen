@@ -10,7 +10,7 @@ import Big from 'big.js';
 })
 export class ScoreCurrentTableComponent implements OnInit {
 
-  constructor(protected players: PlayerService, private game: GameService) { }
+  constructor(public players: PlayerService, private game: GameService) { }
 
   ngOnInit() {
   }

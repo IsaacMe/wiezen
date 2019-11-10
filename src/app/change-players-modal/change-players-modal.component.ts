@@ -9,7 +9,7 @@ import { PlayerService } from '../player.service';
 })
 export class ChangePlayersModalComponent implements OnInit {
 
-  constructor(protected activeModal: NgbActiveModal, protected players: PlayerService) { }
+  constructor(public activeModal: NgbActiveModal, public players: PlayerService) { }
 
   ngOnInit() {
   }

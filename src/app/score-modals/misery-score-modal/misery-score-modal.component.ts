@@ -13,10 +13,10 @@ import { PlayerService } from '../../player.service';
 })
 export class MiseryScoreModalComponent implements OnInit {
   @Input() gameType: GameTypes;
-  protected wins: PlayerActionEnum[];
+  public wins: PlayerActionEnum[];
 
-  constructor(protected activeModal: NgbActiveModal, private gameService: GameService,
-    private scoreCalc: ScoreCalculatorService, protected players: PlayerService) {
+  constructor(public activeModal: NgbActiveModal, private gameService: GameService,
+    private scoreCalc: ScoreCalculatorService, public players: PlayerService) {
     this.wins = [];
 
     for (const player of this.players.getPlayers()) {

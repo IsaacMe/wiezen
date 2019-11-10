@@ -14,7 +14,7 @@ export class PlayerInputComponent implements OnInit {
 
   private selectedPlayer: number;
 
-  constructor(protected players: PlayerService) { }
+  constructor(public players: PlayerService) { }
 
   ngOnInit() {
   }

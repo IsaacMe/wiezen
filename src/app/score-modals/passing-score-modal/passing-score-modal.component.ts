@@ -14,11 +14,11 @@ import Big from 'big.js';
 })
 export class PassingScoreModalComponent implements OnInit {
 
-  constructor(protected activeModal: NgbActiveModal, private gameService: GameService,
+  constructor(public activeModal: NgbActiveModal, private gameService: GameService,
     private playersService: PlayerService, private scoreCalc: ScoreCalculatorService) { }
 
-  protected scores: number[];
-  protected players: string[];
+    public scores: number[];
+    public players: string[];
 
   ngOnInit() {
     this.scores = Array(this.playersService.getNumberOfPlayers()).fill(0);

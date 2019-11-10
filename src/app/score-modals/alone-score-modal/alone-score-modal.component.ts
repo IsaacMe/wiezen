@@ -12,11 +12,11 @@ import {PointsService} from '../../points.service';
 })
 export class AloneScoreModalComponent implements OnInit {
 
-  protected player: number;
-  protected tricks: number;
-  protected gameType: GameTypes = GameTypes.Alone;
+  public player: number;
+  public tricks: number;
+  public gameType: GameTypes = GameTypes.Alone;
 
-  constructor(protected activeModal: NgbActiveModal, protected points: PointsService,
+  constructor(public activeModal: NgbActiveModal, public points: PointsService,
     private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
 
   ngOnInit() {
