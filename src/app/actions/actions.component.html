@@ -1,15 +1,30 @@
-  <ul class="list-group flex-md-column flex-row">
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAbondance(GameTypes.SoloSlim)">Solo slim</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAbondance(GameTypes.Solo)">Solo</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openMisery(GameTypes.OpenMisery)">Open Miserie</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openTrull()">Troel</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAbondance(GameTypes.Abondance12)">Abondance 12</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAbondance(GameTypes.Abondance11)">Abondance 11</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openMisery(GameTypes.Misery)">Miserie</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAbondance(GameTypes.Abondance10)">Abondance 10</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAbondance(GameTypes.Abondance9)">Abondance 9</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAskingAndJoining()">Vraag en mee</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openAlone()">Alleen</button>
-    <button type="button" class="list-group-item list-group-item-action flex-shrink-0" (click)="openPassing()">Passpel</button>
+  <ul class="list-group d-none d-lg-block">
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.SoloSlim)">Solo slim</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Solo)">Solo</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openMisery(GameTypes.OpenMisery)">Open Miserie</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openTrull()">Troel</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance12)">Abondance 12</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance11)">Abondance 11</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openMisery(GameTypes.Misery)">Miserie</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance10)">Abondance 10</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance9)">Abondance 9</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAskingAndJoining()">Vraag en mee</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAlone()">Alleen</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openPassing()">Passpel</button>
+</ul>
 
-  </ul>
+<!-- Dirty solution for bootstrap not alow to re vertically a list-group -->
+<ul class="list-group list-group-horizontal d-lg-none">
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.SoloSlim)">Solo slim</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Solo)">Solo</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openMisery(GameTypes.OpenMisery)">Open Miserie</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openTrull()">Troel</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance12)">Abondance 12</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance11)">Abondance 11</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openMisery(GameTypes.Misery)">Miserie</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance10)">Abondance 10</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAbondance(GameTypes.Abondance9)">Abondance 9</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAskingAndJoining()">Vraag en mee</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openAlone()">Alleen</button>
+    <button type="button" class="list-group-item list-group-item-action" (click)="openPassing()">Passpel</button>
+</ul>

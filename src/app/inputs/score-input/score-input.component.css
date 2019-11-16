@@ -1,0 +1,4 @@
+.btn-group {
+    overflow-x: scroll;
+    max-width: 100%;
+}
