@@ -32,6 +32,31 @@ export class ScoreTable {
     this.size.next(this.entries.length);
   }
 
+  public clearTable(startValue: Scores, type: GameTypes): void {
+    this.entries = [new ScoreEntry(startValue, type, 0)];
+    this.size.next(this.entries.length);
+  }
+
+  public fromJSON(scores: string) {
+    const scoresArr = JSON.parse(scores);
+    const tempEntries = [];
+
+    if (scoresArr instanceof Array) {
+      for (const scoresObj of scoresArr) {
+        tempEntries.push(ScoreEntry.fromJSON(scoresObj));
+      }
+
+      this.entries = tempEntries;
+      this.size.next(this.entries.length);
+    } else {
+      throw new SyntaxError('Scores not as array');
+    }
+  }
+
+  public toJSON(): any {
+    return this.entries;
+  }
+
   /**
    * Returns a cumulative list of the scores
    * @returns {[Big][]}

@@ -6,6 +6,14 @@ export class Scores {
   player3: Big;
   player4: Big;
 
+  static fromJSON(scores: any): Scores {
+    if (!isNaN(scores.player1) && !isNaN(scores.player2) && !isNaN(scores.player3) && !isNaN(scores.player4)) {
+      return new Scores(new Big(scores.player1), new Big(scores.player2), new Big(scores.player3), new Big(scores.player4));
+    } else {
+      throw new SyntaxError('Scores array invalid');
+    }
+  }
+
   constructor(player1?: Big, player2?: Big, player3?: Big, player4?: Big) {
     if (player1) {
       this.player1 = player1;

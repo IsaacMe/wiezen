@@ -23,4 +23,16 @@ export class ScoreEntry {
   get scores(): Scores {
     return this._scores;
   }
+
+  static fromJSON(entry: any): ScoreEntry {
+    if (entry.game in GameTypes && !isNaN(entry.number)) {
+      return new ScoreEntry(Scores.fromJSON(entry.scores), entry.game, entry.number);
+    } else {
+      throw new SyntaxError('Score entry invalid');
+    }
+  }
+
+  public toJSON(): any {
+    return { scores: this._scores, game: this._game, number: this._number};
+  }
 }
