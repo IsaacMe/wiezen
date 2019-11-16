@@ -1,0 +1,10 @@
+@media(max-width: 768px) {
+    ul {
+        overflow-x: scroll;
+    }
+
+    .list-group-item {
+        flex-shrink: 0;
+        width: auto;
+    }
+}
