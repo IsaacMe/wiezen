@@ -10,17 +10,25 @@ import { GameService } from '../game.service';
 })
 export class NavigationComponent implements OnInit {
 
+  public isMenuCollapsed = true;
+
   constructor(private modalService: NgbModal, private gameService: GameService) { }
 
   ngOnInit() {
   }
 
   startNewGame() {
+    this.menuClicked();
     this.gameService.startNewGame();
   }
 
   openChangeNames() {
+    this.menuClicked();
     const modalRef = this.modalService.open(ChangePlayersModalComponent);
+  }
+
+  menuClicked() {
+    this.isMenuCollapsed = true;
   }
 
 }
