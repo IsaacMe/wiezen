@@ -6,10 +6,10 @@
     </thead>
     <tbody>
       <tr>
-        <td *ngFor="let score of getTotalScores();">{{score}}</td>
+        <td *ngFor="let score of getLastScores();">{{score}}</td>
       </tr>
       <tr>
-        <td *ngFor="let score of getLastScores();">{{score}}</td>
-        </tr>
+        <td *ngFor="let score of getTotalScores();" [ngClass]="{'table-success': score > 0, 'table-danger': score < 0 }">{{score}}</td>
+      </tr>
     </tbody>
   </table>
