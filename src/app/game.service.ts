@@ -23,8 +23,8 @@ export class GameService {
           console.log(e);
         }
       }
-      this._triedToLoad = true;
     }
+    this._triedToLoad = true;
   }
 
   get scoreTable(): ScoreTable {
@@ -43,7 +43,6 @@ export class GameService {
 
   private storeScoreTable(): void {
     if (this._triedToLoad) {
-      console.log(JSON.stringify(this._scoreTable));
       localStorage.setItem(this._localStorageKey, JSON.stringify(this._scoreTable));
     }
   }
