@@ -28,8 +28,10 @@ export class ScoreTable {
   }
 
   public removeLast(): void {
-    this.entries.pop();
-    this.size.next(this.entries.length);
+    if (this.entries.length > 1) {
+      this.entries.pop();
+      this.size.next(this.entries.length);
+    }
   }
 
   public clearTable(startValue: Scores, type: GameTypes): void {
