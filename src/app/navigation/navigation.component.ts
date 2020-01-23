@@ -22,6 +22,10 @@ export class NavigationComponent implements OnInit {
     this.gameService.startNewGame();
   }
 
+  undoLast() {
+    this.gameService.scoreTable.removeLast();
+  }
+
   openChangeNames() {
     this.menuClicked();
     const modalRef = this.modalService.open(ChangePlayersModalComponent);
