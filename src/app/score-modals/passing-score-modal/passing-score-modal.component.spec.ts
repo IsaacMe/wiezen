@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PassingScoreModalComponent } from './passing-score-modal.component';
 
@@ -6,7 +6,7 @@ describe('PassingScoreModalComponent', () => {
   let component: PassingScoreModalComponent;
   let fixture: ComponentFixture<PassingScoreModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PassingScoreModalComponent ]
     })

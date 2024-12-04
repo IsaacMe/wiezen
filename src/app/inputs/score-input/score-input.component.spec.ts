@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ScoreInputComponent } from './score-input.component';
 
@@ -6,7 +6,7 @@ describe('ScoreInputComponent', () => {
   let component: ScoreInputComponent;
   let fixture: ComponentFixture<ScoreInputComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ScoreInputComponent ]
     })

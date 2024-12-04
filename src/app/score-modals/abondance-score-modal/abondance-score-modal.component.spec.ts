@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AbondanceScoreModalComponent } from './abondance-score-modal.component';
 
@@ -6,7 +6,7 @@ describe('AbondanceScoreModalComponent', () => {
   let component: AbondanceScoreModalComponent;
   let fixture: ComponentFixture<AbondanceScoreModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AbondanceScoreModalComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AloneScoreModalComponent } from './alone-score-modal.component';
 
@@ -6,7 +6,7 @@ describe('AloneScoreModalComponent', () => {
   let component: AloneScoreModalComponent;
   let fixture: ComponentFixture<AloneScoreModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AloneScoreModalComponent ]
     })
