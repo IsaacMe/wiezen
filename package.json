@@ -27,7 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "@types/chart.js": "^2.7.7",
     "big.js": "^5.2.2",
-    "bootstrap-css-only": "^4.4.1",
+    "bootstrap": "^4.5.0",
     "chart.js": "^2.9.1",
     "core-js": "^2.4.1",
     "rxjs": "^6.6.7",
