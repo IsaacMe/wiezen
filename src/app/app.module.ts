@@ -46,7 +46,7 @@ import { ScoreCurrentTableComponent } from './score-current-table/score-current-
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
+    NgbModule,
     FormsModule
   ],
   providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
