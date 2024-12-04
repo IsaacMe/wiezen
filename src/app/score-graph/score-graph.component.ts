@@ -10,7 +10,7 @@ import {PlayerService} from '../player.service';
 })
 export class ScoreGraphComponent implements OnInit {
 
-  @ViewChild('chart') private chartElem: ElementRef;
+  @ViewChild('chart', { static: true }) private chartElem: ElementRef;
   private chart: Chart;
   private datasets;
   private colors = ['rgb(52, 152, 219)', 'rgb(231, 76, 60)', 'rgb(46, 204, 113)', 'rgb(241, 196, 15)'];
