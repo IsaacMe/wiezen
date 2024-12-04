@@ -1,7 +1,7 @@
 import {ScoreEntry} from './score-entry';
 import {Scores} from './scores';
 import {GameTypes} from './game-types.enum';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {BehaviorSubject} from 'rxjs';
 import Big from 'big.js';
 
 export class ScoreTable {
