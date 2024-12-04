@@ -22,7 +22,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap-css-only/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -121,11 +121,10 @@
       }
     }
   },
-  "defaultProject": "wiezen",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "style": "css"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
