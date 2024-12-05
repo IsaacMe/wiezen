@@ -1,25 +1,29 @@
 <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-light bg-light">
-  <a class="navbar-brand" href="#">Wiezen</a>
-  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Wiezen</a>
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <button class="btn btn-link nav-link" (click)="startNewGame()">Nieuw spel</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-link nav-link" (click)="openChangeNames()">Wijzig spelers</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-link nav-link" (click)="undoLast()">Verwijder laatste ronde</button>
-      </li>
-    </ul>
-    <ul class="navbar-nav navbar-right ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="https://isaacmeers.be">By: Isaac Meers</a>
-      </li>
-    </ul>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button class="btn btn-link nav-link" (click)="startNewGame()">Nieuw spel</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-link nav-link" (click)="openChangeNames()">Wijzig spelers</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-link nav-link" (click)="undoLast()">Verwijder laatste ronde</button>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://isaacmeers.be">By: Isaac Meers</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

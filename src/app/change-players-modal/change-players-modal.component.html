@@ -1,13 +1,11 @@
 <div class="modal-header">
   <h4 class="modal-title">Wijzig namen</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
   <form>
-    <div *ngFor="let i of numberOfPlayersRange()" class="form-group">
-      <label attr.for="playerForm{{i + 1}}">Speler {{i + 1}}</label>
+    <div *ngFor="let i of numberOfPlayersRange()" class="mb-3">
+      <label attr.for="playerForm{{i + 1}}" class="col-form-label">Speler {{i + 1}}</label>
       <input [value]="players.getPlayerName(i)" (input)="players.setPlayerName(i, $event.target.value)" type="text"  class="form-control" id="playerForm{{i + 1}}" placeholder="Naam van speler {{i + 1}}">
     </div>
   </form>

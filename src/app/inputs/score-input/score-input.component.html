@@ -1,8 +1,8 @@
-<div class="form-group">
+<div class="mb-3">
   <label class="col-sm-2 col-form-label">{{title}}</label>
   <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="score">
     <label *ngFor="let val of values" ngbButtonLabel [ngClass]="{'btn-primary': positiveScore==undefined, 'btn-success': val >= positiveScore, 'btn-danger': val < positiveScore}">
-      <input ngbButton type="radio" [value]="val">{{val}}
+      <input ngbButton class="btn-check" type="radio" [value]="val">{{val}}
     </label>
   </div>
 </div>

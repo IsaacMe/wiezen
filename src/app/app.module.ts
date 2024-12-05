@@ -27,31 +27,29 @@ import { ScoreCurrentTableComponent } from './score-current-table/score-current-
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent,
-    ChangePlayersModalComponent,
-    ActionsComponent,
-    ScoreGraphComponent,
-    PassingScoreModalComponent,
-    ScoreInputComponent,
-    AbondanceScoreModalComponent,
-    PlayerInputComponent,
-    WinLoseInputComponent,
-    WinLoseDnpInputComponent,
-    AskingAndJoiningScoreModalComponent,
-    AloneScoreModalComponent,
-    MiseryScoreModalComponent,
-    ScoreCurrentTableComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    FormsModule
-  ],
-  providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
-  bootstrap: [AppComponent],
-  entryComponents: [ChangePlayersModalComponent, PassingScoreModalComponent, AbondanceScoreModalComponent,
-    AskingAndJoiningScoreModalComponent, AloneScoreModalComponent, MiseryScoreModalComponent]
+    declarations: [
+        AppComponent,
+        NavigationComponent,
+        ChangePlayersModalComponent,
+        ActionsComponent,
+        ScoreGraphComponent,
+        PassingScoreModalComponent,
+        ScoreInputComponent,
+        AbondanceScoreModalComponent,
+        PlayerInputComponent,
+        WinLoseInputComponent,
+        WinLoseDnpInputComponent,
+        AskingAndJoiningScoreModalComponent,
+        AloneScoreModalComponent,
+        MiseryScoreModalComponent,
+        ScoreCurrentTableComponent
+    ],
+    imports: [
+        BrowserModule,
+        NgbModule,
+        FormsModule
+    ],
+    providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
