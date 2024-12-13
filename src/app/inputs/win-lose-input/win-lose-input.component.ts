@@ -10,12 +10,14 @@ export class WinLoseInputComponent implements OnInit {
   private static uniqueIdCounter = 0;
 
   @Input() title: string = '';
+  @Input() win: boolean;
   @Output() winChange = new EventEmitter<boolean>();
 
   inputId = `win-lose-${WinLoseInputComponent.uniqueIdCounter++}`;
   winControl = new FormControl<boolean | null>(null);
 
   ngOnInit(): void {
+    this.winControl.setValue(this.win);
     this.winControl.valueChanges.subscribe((value) => {
       if (value !== null) {
         this.winChange.emit(value);
