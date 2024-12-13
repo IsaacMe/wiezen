@@ -1,15 +1,9 @@
-<div class="mb-3">
+<div class="row mb-3 g-3 align-items-center">
   <label class="col-sm-2 col-form-label">{{ title }}</label>
-  <div class="btn-group" role="group">
+  <div class="col-auto btn-group mt-0" role="group">
     <ng-container *ngFor="let player of playersList; let i = index; trackBy: trackByIndex">
-      <input 
-        [id]="inputId + '-' + i" 
-        class="btn-check" 
-        [name]="inputId" 
-        type="radio" 
-        [value]="i + 1" 
-        [formControl]="playerControl"
-        [attr.disabled]="disablePlayer === i + 1 ? true : null">
+      <input [id]="inputId + '-' + i" class="btn-check" [name]="inputId" type="radio" [value]="i + 1"
+        [formControl]="playerControl" [attr.disabled]="disablePlayer === i + 1 ? true : null">
       <label [for]="inputId + '-' + i" class="btn btn-outline-primary">
         {{ player }}
       </label>
