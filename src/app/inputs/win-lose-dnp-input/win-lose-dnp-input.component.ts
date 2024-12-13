@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { PlayerActionEnum } from '../../score/player-action.enum';
 
 @Component({
@@ -7,27 +8,31 @@ import { PlayerActionEnum } from '../../score/player-action.enum';
   styleUrls: ['./win-lose-dnp-input.component.css']
 })
 export class WinLoseDnpInputComponent implements OnInit {
+  private static uniqueIdCounter = 0;
+
+  @Input() title: string = '';
+  @Input() win: PlayerActionEnum;
+  @Output() winChange = new EventEmitter<PlayerActionEnum>();
 
   public WinLoseDnp = PlayerActionEnum;
+  inputId = `win-lose-dnp-${WinLoseDnpInputComponent.uniqueIdCounter++}`;
+  winControl = new FormControl<PlayerActionEnum | null>(null);
 
-  @Input() title: string;
-  private winValue: PlayerActionEnum;
-
-  @Output() winChange = new EventEmitter();
-
-  @Input()
-  get win(): PlayerActionEnum {
-    return this.winValue;
+  ngOnInit(): void {
+    this.winControl.setValue(this.win);
+    this.winControl.valueChanges.subscribe(value => {
+      if (value !== null) {
+        this.winChange.emit(value);
+      }
+    });
   }
 
-  set win(val: PlayerActionEnum) {
-    this.winValue = val;
-    this.winChange.emit(this.winValue);
+  /**
+   * Generate a unique ID for each input element.
+   * @param value The value associated with the radio button.
+   * @returns A unique string ID.
+   */
+  generateId(value: PlayerActionEnum): string {
+    return `${this.inputId}-${value}`;
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

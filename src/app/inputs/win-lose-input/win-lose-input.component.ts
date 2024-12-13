@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-win-lose-input',
@@ -6,25 +7,28 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./win-lose-input.component.css']
 })
 export class WinLoseInputComponent implements OnInit {
+  private static uniqueIdCounter = 0;
 
-  @Input() title: string;
-  private winValue: boolean;
+  @Input() title: string = '';
+  @Output() winChange = new EventEmitter<boolean>();
 
-  @Output() winChange = new EventEmitter();
+  inputId = `win-lose-${WinLoseInputComponent.uniqueIdCounter++}`;
+  winControl = new FormControl<boolean | null>(null);
 
-  @Input()
-  get win(): boolean {
-    return this.winValue;
+  ngOnInit(): void {
+    this.winControl.valueChanges.subscribe((value) => {
+      if (value !== null) {
+        this.winChange.emit(value);
+      }
+    });
   }
 
-  set win(val: boolean) {
-    this.winValue = val;
-    this.winChange.emit(this.winValue);
+  /**
+   * Generate a unique ID for each input element.
+   * @param value The value associated with the radio button.
+   * @returns A unique string ID.
+   */
+  generateId(value: boolean): string {
+    return `${this.inputId}-${value}`;
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

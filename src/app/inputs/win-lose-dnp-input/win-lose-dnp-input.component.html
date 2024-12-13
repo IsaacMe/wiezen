@@ -1,14 +1,37 @@
 <div class="mb-3">
-  <label class="col-sm-2 col-form-label">{{title}}</label>
-  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="win">
-    <label ngbButtonLabel class="btn-secondary">
-      <input ngbButton class="btn-check" type="radio" [value]="WinLoseDnp.DidNotPlay"> Niet gespeeld
+  <label class="col-sm-2 col-form-label">{{ title }}</label>
+  <div class="btn-group" role="group">
+    <input 
+      [id]="generateId(WinLoseDnp.DidNotPlay)" 
+      class="btn-check" 
+      type="radio" 
+      [name]="inputId" 
+      [value]="WinLoseDnp.DidNotPlay" 
+      [formControl]="winControl">
+    <label [for]="generateId(WinLoseDnp.DidNotPlay)" class="btn btn-outline-secondary">
+      Niet gespeeld
     </label>
-    <label ngbButtonLabel class="btn-success">
-      <input ngbButton class="btn-check" type="radio" [value]="WinLoseDnp.Win"> Winst
+    
+    <input 
+      [id]="generateId(WinLoseDnp.Win)" 
+      class="btn-check" 
+      type="radio" 
+      [name]="inputId" 
+      [value]="WinLoseDnp.Win" 
+      [formControl]="winControl">
+    <label [for]="generateId(WinLoseDnp.Win)" class="btn btn-outline-success">
+      Winst
     </label>
-    <label ngbButtonLabel class="btn-danger">
-      <input ngbButton class="btn-check" type="radio" [value]="WinLoseDnp.Lose"> Verlies
+    
+    <input 
+      [id]="generateId(WinLoseDnp.Lose)" 
+      class="btn-check" 
+      type="radio" 
+      [name]="inputId" 
+      [value]="WinLoseDnp.Lose" 
+      [formControl]="winControl">
+    <label [for]="generateId(WinLoseDnp.Lose)" class="btn btn-outline-danger">
+      Verlies
     </label>
   </div>
 </div>

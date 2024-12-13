@@ -1,11 +1,22 @@
 <div class="mb-3">
-  <label class="col-sm-2 col-form-label">{{title}}</label>
-  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="win">
-    <label ngbButtonLabel class="btn-success">
-      <input ngbButton class="btn-check" type="radio" [value]="true"> Winst
-    </label>
-    <label ngbButtonLabel class="btn-danger">
-      <input ngbButton class="btn-check" type="radio" [value]="false"> Verlies
-    </label>
+  <label class="col-sm-2 col-form-label">{{ title }}</label>
+  <div class="btn-group" role="group">
+    <input 
+      [id]="generateId(true)" 
+      [name]="inputId" 
+      class="btn-check" 
+      type="radio" 
+      [value]="true" 
+      [formControl]="winControl">
+    <label [for]="generateId(true)" class="btn btn-outline-success">Winst</label>
+
+    <input 
+      [id]="generateId(false)" 
+      [name]="inputId" 
+      class="btn-check" 
+      type="radio" 
+      [value]="false" 
+      [formControl]="winControl">
+    <label [for]="generateId(false)" class="btn btn-outline-danger">Verlies</label>
   </div>
 </div>

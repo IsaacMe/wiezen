@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ChangePlayersModalComponent } from './change-players-modal/change-players-modal.component';
 import {PlayerService} from './player.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ActionsComponent } from './actions/actions.component';
 import { ScoreGraphComponent } from './score-graph/score-graph.component';
 import {GameService} from './game.service';
@@ -47,7 +47,8 @@ import { ScoreCurrentTableComponent } from './score-current-table/score-current-
     imports: [
         BrowserModule,
         NgbModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [PlayerService, GameService, PointsService, ScoreCalculatorService],
     bootstrap: [AppComponent]
