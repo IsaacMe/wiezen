@@ -22,4 +22,12 @@ export class ScoreCurrentTableComponent implements OnInit {
   getLastScores(): Big[] {
     return this.game.scoreTable.getLastScores();
   }
+
+  getRound(): number {
+    return this.game.scoreTable.getRoundCount();
+  }
+
+  getCurrentGiver(): number {
+    return (this.getRound() - 1) % 4;
+  }
 }

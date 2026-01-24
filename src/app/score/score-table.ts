@@ -3,6 +3,7 @@ import {Scores} from './scores';
 import {GameTypes} from './game-types.enum';
 import {BehaviorSubject} from 'rxjs';
 import Big from 'big.js';
+import { GameResult } from './game-result';
 
 export class ScoreTable {
   private entries: ScoreEntry[];
@@ -18,12 +19,20 @@ export class ScoreTable {
     return scores.reduce((acc, curr) => acc.map((b, i) => curr[i].plus(b)));
   }
 
+  public getRoundCount(): number {
+    return this.size.getValue();
+  }
+
   public getLastScores(): Big[] {
     return this.entries[this.entries.length - 1].scores.getArray();
   }
 
-  public addEntry(scores: Scores, type: GameTypes): void {
-    this.entries.push(new ScoreEntry(scores, type, this.entries.length));
+  public getLastScoreEntry(): ScoreEntry {
+    return this.entries[this.entries.length - 1];
+  }
+
+  public addEntry(scores: Scores, result: GameResult): void {
+    this.entries.push(new ScoreEntry(scores, result, this.entries.length));
     this.size.next(this.entries.length);
   }
 
@@ -34,8 +43,8 @@ export class ScoreTable {
     }
   }
 
-  public clearTable(startValue: Scores, type: GameTypes): void {
-    this.entries = [new ScoreEntry(startValue, type, 0)];
+  public clearTable(startValue: Scores, result: GameResult): void {
+    this.entries = [new ScoreEntry(startValue, result, 0)];
     this.size.next(this.entries.length);
   }
 

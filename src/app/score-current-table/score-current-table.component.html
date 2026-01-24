@@ -1,7 +1,7 @@
 <table class="table">
     <thead>
       <tr>
-        <th *ngFor="let item of players.getPlayers(); let i = index;" scope="col">{{item}}</th>
+        <th *ngFor="let item of players.getPlayers(); let i = index;" [class.table-primary]="i===getCurrentGiver()" scope="col">{{item}}</th>
       </tr>
     </thead>
     <tbody>

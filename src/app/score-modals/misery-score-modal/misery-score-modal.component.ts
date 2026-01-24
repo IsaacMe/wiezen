@@ -5,6 +5,7 @@ import { ScoreCalculatorService } from '../../score-calculator.service';
 import { GameTypes } from '../../score/game-types.enum';
 import { PlayerActionEnum } from '../../score/player-action.enum';
 import { PlayerService } from '../../player.service';
+import { MiseryResult } from '../../score/game-result';
 
 @Component({
   selector: 'app-misery-score-modal',
@@ -28,7 +29,8 @@ export class MiseryScoreModalComponent implements OnInit {
   }
 
   public addAndClose(): void {
-    this.gameService.scoreTable.addEntry(this.scoreCalc.calcMisery(this.wins, this.gameType), this.gameType);
+    const result = new MiseryResult(this.wins, this.gameType);
+    this.gameService.scoreTable.addEntry(this.scoreCalc.calcMisery(result), result);
     this.activeModal.close('Saved');
   }
 

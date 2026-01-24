@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ScoreTable} from './score/score-table';
 import {GameTypes} from './score/game-types.enum';
 import {Scores} from './score/scores';
+import { OtherResult } from './score/game-result';
 
 @Injectable()
 export class GameService {
@@ -32,12 +33,12 @@ export class GameService {
   }
 
   public startNewGame() {
-    this._scoreTable.clearTable(new Scores(), GameTypes.Other);
+    this._scoreTable.clearTable(new Scores(), new OtherResult());
   }
 
   private generateNewScoreTable(): void {
     this._scoreTable = new ScoreTable();
-    this._scoreTable.addEntry(new Scores(), GameTypes.Other);
+    this._scoreTable.addEntry(new Scores(), new OtherResult());
     this._scoreTable.getObservableSize().subscribe(() => this.storeScoreTable());
   }
 

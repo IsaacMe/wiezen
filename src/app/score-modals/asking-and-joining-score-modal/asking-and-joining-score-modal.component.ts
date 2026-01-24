@@ -4,6 +4,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {PointsService} from '../../points.service';
 import {GameService} from '../../game.service';
 import {ScoreCalculatorService} from '../../score-calculator.service';
+import { AskingAndJoiningResult } from '../../score/game-result';
 
 @Component({
   selector: 'app-asking-and-joining-score-modal',
@@ -12,7 +13,7 @@ import {ScoreCalculatorService} from '../../score-calculator.service';
 })
 export class AskingAndJoiningScoreModalComponent implements OnInit {
 
-  @Input() gameType: GameTypes;
+  @Input() gameType: GameTypes.AskingAndJoining | GameTypes.Trull;
   public player1: number;
   public player2: number;
   public tricks: number;
@@ -24,8 +25,9 @@ export class AskingAndJoiningScoreModalComponent implements OnInit {
   }
 
   public addAndClose() {
+    const result = new AskingAndJoiningResult(this.player1, this.player2, this.tricks, this.gameType);
     this.gameService.scoreTable.addEntry(
-      this.scoreCalc.calcAskingAndJoining(this.player1, this.player2, this.tricks, this.gameType), this.gameType);
+      this.scoreCalc.calcAskingAndJoining(result), result);
     this.activeModal.close('Saved');
   }
 

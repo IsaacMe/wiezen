@@ -24,6 +24,7 @@ import { AloneScoreModalComponent } from './score-modals/alone-score-modal/alone
 import { MiseryScoreModalComponent } from './score-modals/misery-score-modal/misery-score-modal.component';
 import { WinLoseDnpInputComponent } from './inputs/win-lose-dnp-input/win-lose-dnp-input.component';
 import { ScoreCurrentTableComponent } from './score-current-table/score-current-table.component';
+import { LastGameSummaryComponent } from './last-game-summary/last-game-summary.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ScoreCurrentTableComponent } from './score-current-table/score-current-
         AskingAndJoiningScoreModalComponent,
         AloneScoreModalComponent,
         MiseryScoreModalComponent,
-        ScoreCurrentTableComponent
+        ScoreCurrentTableComponent,
+        LastGameSummaryComponent
     ],
     imports: [
         BrowserModule,
