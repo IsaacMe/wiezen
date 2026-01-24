@@ -1,13 +1,13 @@
 <div class="row mb-3 g-3 align-items-center">
   <label class="col-sm-2 col-form-label">{{ title }}</label>
   <div class="col-auto mt-0 btn-group" role="group">
-    <ng-container *ngFor="let val of values; trackBy: trackByValue">
-      <input 
-        [id]="generateId(val)" 
-        [name]="inputId" 
-        class="btn-check" 
-        type="radio" 
-        [value]="val" 
+    @for (val of values; track trackByValue($index, val)) {
+      <input
+        [id]="generateId(val)"
+        [name]="inputId"
+        class="btn-check"
+        type="radio"
+        [value]="val"
         [formControl]="scoreControl">
       <label
         [for]="generateId(val)"
@@ -19,6 +19,6 @@
         }">
         {{ val }}
       </label>
-    </ng-container>
+    }
   </div>
 </div>

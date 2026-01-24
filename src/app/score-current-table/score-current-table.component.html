@@ -1,15 +1,21 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th *ngFor="let item of players.getPlayers(); let i = index;" [class.table-primary]="i===getCurrentGiver()" scope="col">{{item}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td *ngFor="let score of getLastScores();">{{score}}</td>
-      </tr>
-      <tr>
-        <td *ngFor="let score of getTotalScores();" [ngClass]="{'table-success': score > 0, 'table-danger': score < 0 }">{{score}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      @for (item of players.getPlayers(); track item; let i = $index) {
+        <th [class.table-primary]="i===getCurrentGiver()" scope="col">{{item}}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      @for (score of getLastScores(); track score) {
+        <td>{{score}}</td>
+      }
+    </tr>
+    <tr>
+      @for (score of getTotalScores(); track score) {
+        <td [ngClass]="{'table-success': score > 0, 'table-danger': score < 0 }">{{score}}</td>
+      }
+    </tr>
+  </tbody>
+</table>

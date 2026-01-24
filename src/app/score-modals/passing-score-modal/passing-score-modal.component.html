@@ -3,13 +3,19 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-  <app-score-input *ngFor="let player of players; let i = index" [title]="player" [(score)]="scores[i]"></app-score-input>
-  <div *ngIf="scoreSum() != 13" class="alert alert-danger" role="alert">
-    <strong>Totaal: </strong> {{scoreSum()}}
-  </div>
-  <div *ngIf="scoreSum() == 13" class="alert alert-success" role="alert">
-    <strong>Totaal: </strong> {{scoreSum()}}
-  </div>
+  @for (player of players; track player; let i = $index) {
+    <app-score-input [title]="player" [(score)]="scores[i]"></app-score-input>
+  }
+  @if (scoreSum() != 13) {
+    <div class="alert alert-danger" role="alert">
+      <strong>Totaal: </strong> {{scoreSum()}}
+    </div>
+  }
+  @if (scoreSum() == 13) {
+    <div class="alert alert-success" role="alert">
+      <strong>Totaal: </strong> {{scoreSum()}}
+    </div>
+  }
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Sluit</button>
