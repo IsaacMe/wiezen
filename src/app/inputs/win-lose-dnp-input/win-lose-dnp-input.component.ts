@@ -3,9 +3,10 @@ import { FormControl } from '@angular/forms';
 import { PlayerActionEnum } from '../../score/player-action.enum';
 
 @Component({
-  selector: 'app-win-lose-dnp-input',
-  templateUrl: './win-lose-dnp-input.component.html',
-  styleUrls: ['./win-lose-dnp-input.component.css']
+    selector: 'app-win-lose-dnp-input',
+    templateUrl: './win-lose-dnp-input.component.html',
+    styleUrls: ['./win-lose-dnp-input.component.css'],
+    standalone: false
 })
 export class WinLoseDnpInputComponent implements OnInit {
   private static uniqueIdCounter = 0;

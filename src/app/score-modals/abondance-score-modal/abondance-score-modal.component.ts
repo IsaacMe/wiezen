@@ -6,9 +6,10 @@ import {GameTypes} from '../../score/game-types.enum';
 import { AbondanceResult } from '../../score/game-result';
 
 @Component({
-  selector: 'app-abondance-score-modal',
-  templateUrl: './abondance-score-modal.component.html',
-  styleUrls: ['./abondance-score-modal.component.css']
+    selector: 'app-abondance-score-modal',
+    templateUrl: './abondance-score-modal.component.html',
+    styleUrls: ['./abondance-score-modal.component.css'],
+    standalone: false
 })
 export class AbondanceScoreModalComponent implements OnInit {
 

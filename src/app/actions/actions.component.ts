@@ -8,9 +8,10 @@ import {AloneScoreModalComponent} from '../score-modals/alone-score-modal/alone-
 import { MiseryScoreModalComponent } from '../score-modals/misery-score-modal/misery-score-modal.component';
 
 @Component({
-  selector: 'app-actions',
-  templateUrl: './actions.component.html',
-  styleUrls: ['./actions.component.css']
+    selector: 'app-actions',
+    templateUrl: './actions.component.html',
+    styleUrls: ['./actions.component.css'],
+    standalone: false
 })
 export class ActionsComponent implements OnInit {
 

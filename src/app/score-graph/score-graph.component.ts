@@ -4,9 +4,10 @@ import {GameService} from '../game.service';
 import {PlayerService} from '../player.service';
 
 @Component({
-  selector: 'app-score-graph',
-  templateUrl: './score-graph.component.html',
-  styleUrls: ['./score-graph.component.css']
+    selector: 'app-score-graph',
+    templateUrl: './score-graph.component.html',
+    styleUrls: ['./score-graph.component.css'],
+    standalone: false
 })
 export class ScoreGraphComponent implements OnInit {
 

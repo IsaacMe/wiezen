@@ -7,9 +7,10 @@ import { AbondanceResult, AloneResult, AskingAndJoiningResult, MiseryResult, Pas
 import { PlayerActionEnum } from '../score/player-action.enum';
 
 @Component({
-  selector: 'app-last-game-summary',
-  templateUrl: './last-game-summary.component.html',
-  styleUrls: ['./last-game-summary.component.css']
+    selector: 'app-last-game-summary',
+    templateUrl: './last-game-summary.component.html',
+    styleUrls: ['./last-game-summary.component.css'],
+    standalone: false
 })
 export class LastGameSummaryComponent implements OnInit {
 

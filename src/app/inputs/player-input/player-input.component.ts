@@ -3,9 +3,10 @@ import { FormControl } from '@angular/forms';
 import { PlayerService } from '../../player.service';
 
 @Component({
-  selector: 'app-player-input',
-  templateUrl: './player-input.component.html',
-  styleUrls: ['./player-input.component.css']
+    selector: 'app-player-input',
+    templateUrl: './player-input.component.html',
+    styleUrls: ['./player-input.component.css'],
+    standalone: false
 })
 export class PlayerInputComponent implements OnInit {
   private static uniqueIdCounter = 0;

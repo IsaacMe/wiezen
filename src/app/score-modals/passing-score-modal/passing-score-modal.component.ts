@@ -9,9 +9,10 @@ import Big from 'big.js';
 import { PassingResult } from '../../score/game-result';
 
 @Component({
-  selector: 'app-passing-score-modal',
-  templateUrl: './passing-score-modal.component.html',
-  styleUrls: ['./passing-score-modal.component.css']
+    selector: 'app-passing-score-modal',
+    templateUrl: './passing-score-modal.component.html',
+    styleUrls: ['./passing-score-modal.component.css'],
+    standalone: false
 })
 export class PassingScoreModalComponent implements OnInit {
 

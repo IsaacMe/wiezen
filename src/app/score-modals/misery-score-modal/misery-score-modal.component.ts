@@ -8,9 +8,10 @@ import { PlayerService } from '../../player.service';
 import { MiseryResult } from '../../score/game-result';
 
 @Component({
-  selector: 'app-misery-score-modal',
-  templateUrl: './misery-score-modal.component.html',
-  styleUrls: ['./misery-score-modal.component.css']
+    selector: 'app-misery-score-modal',
+    templateUrl: './misery-score-modal.component.html',
+    styleUrls: ['./misery-score-modal.component.css'],
+    standalone: false
 })
 export class MiseryScoreModalComponent implements OnInit {
   @Input() gameType: GameTypes;

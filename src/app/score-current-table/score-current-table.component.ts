@@ -4,9 +4,10 @@ import { GameService } from '../game.service';
 import Big from 'big.js';
 
 @Component({
-  selector: 'app-score-current-table',
-  templateUrl: './score-current-table.component.html',
-  styleUrls: ['./score-current-table.component.css']
+    selector: 'app-score-current-table',
+    templateUrl: './score-current-table.component.html',
+    styleUrls: ['./score-current-table.component.css'],
+    standalone: false
 })
 export class ScoreCurrentTableComponent implements OnInit {
 

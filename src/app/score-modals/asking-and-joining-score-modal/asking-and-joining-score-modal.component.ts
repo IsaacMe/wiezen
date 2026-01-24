@@ -7,9 +7,10 @@ import {ScoreCalculatorService} from '../../score-calculator.service';
 import { AskingAndJoiningResult } from '../../score/game-result';
 
 @Component({
-  selector: 'app-asking-and-joining-score-modal',
-  templateUrl: './asking-and-joining-score-modal.component.html',
-  styleUrls: ['./asking-and-joining-score-modal.component.css']
+    selector: 'app-asking-and-joining-score-modal',
+    templateUrl: './asking-and-joining-score-modal.component.html',
+    styleUrls: ['./asking-and-joining-score-modal.component.css'],
+    standalone: false
 })
 export class AskingAndJoiningScoreModalComponent implements OnInit {
 

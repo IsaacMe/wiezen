@@ -7,9 +7,10 @@ import {PointsService} from '../../points.service';
 import { AloneResult } from '../../score/game-result';
 
 @Component({
-  selector: 'app-alone-score-modal',
-  templateUrl: './alone-score-modal.component.html',
-  styleUrls: ['./alone-score-modal.component.css']
+    selector: 'app-alone-score-modal',
+    templateUrl: './alone-score-modal.component.html',
+    styleUrls: ['./alone-score-modal.component.css'],
+    standalone: false
 })
 export class AloneScoreModalComponent implements OnInit {
 

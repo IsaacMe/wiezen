@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-win-lose-input',
-  templateUrl: './win-lose-input.component.html',
-  styleUrls: ['./win-lose-input.component.css']
+    selector: 'app-win-lose-input',
+    templateUrl: './win-lose-input.component.html',
+    styleUrls: ['./win-lose-input.component.css'],
+    standalone: false
 })
 export class WinLoseInputComponent implements OnInit {
   private static uniqueIdCounter = 0;

@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-score-input',
-  templateUrl: './score-input.component.html',
-  styleUrls: ['./score-input.component.css']
+    selector: 'app-score-input',
+    templateUrl: './score-input.component.html',
+    styleUrls: ['./score-input.component.css'],
+    standalone: false
 })
 export class ScoreInputComponent implements OnInit {
   private static uniqueIdCounter = 0;
