@@ -1,7 +1,7 @@
 <div class="row mb-3 g-3 align-items-center">
   <label class="col-sm-2 col-form-label">{{ title }}</label>
   <div class="col-auto btn-group mt-0" role="group">
-    @for (player of playersList; track trackByIndex(i, player); let i = $index) {
+    @for (player of playersList; track $index; let i = $index) {
       <input [id]="inputId + '-' + i" class="btn-check" [name]="inputId" type="radio" [value]="i + 1"
         [formControl]="playerControl" [attr.disabled]="disablePlayer === i + 1 ? true : null">
       <label [for]="inputId + '-' + i" class="btn btn-outline-primary">
