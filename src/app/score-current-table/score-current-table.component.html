@@ -2,19 +2,19 @@
   <thead>
     <tr>
       @for (item of players.getPlayers(); track item; let i = $index) {
-        <th [class.table-primary]="i===getCurrentGiver()" scope="col">{{item}}</th>
+        <th [class.table-primary]="i === currentGiver" scope="col">{{item}}</th>
       }
     </tr>
   </thead>
   <tbody>
     <tr>
-      @for (score of getLastScores(); track score) {
+      @for (score of lastScores; track $index) {
         <td>{{score}}</td>
       }
     </tr>
     <tr>
-      @for (score of getTotalScores(); track score) {
-        <td [ngClass]="{'table-success': score > 0, 'table-danger': score < 0 }">{{score}}</td>
+      @for (score2 of totalScores; track $index) {
+        <td [class]="{'table-success': score2 > 0, 'table-danger': score2 < 0 }">{{score2}}</td>
       }
     </tr>
   </tbody>
