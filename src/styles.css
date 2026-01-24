@@ -1,0 +1,35 @@
+/* Custom selectgroup color highlighting */
+
+/* Subtle unselected state */
+.selectgroup-success .form-selectgroup-label {
+  background-color: rgba(var(--tblr-success-rgb), 0.04);
+  color: var(--tblr-success);
+}
+
+.selectgroup-danger .form-selectgroup-label {
+  background-color: rgba(var(--tblr-danger-rgb), 0.04);
+  color: var(--tblr-danger);
+}
+
+/* Selected state - stronger colors */
+.selectgroup-success .form-selectgroup-input:checked + .form-selectgroup-label {
+  background-color: rgba(var(--tblr-success-rgb), 0.15);
+  border-color: var(--tblr-success);
+  color: var(--tblr-success);
+}
+
+.selectgroup-success .form-selectgroup-input:checked + .form-selectgroup-label .form-selectgroup-check {
+  border-color: var(--tblr-success);
+  background-color: var(--tblr-success);
+}
+
+.selectgroup-danger .form-selectgroup-input:checked + .form-selectgroup-label {
+  background-color: rgba(var(--tblr-danger-rgb), 0.15);
+  border-color: var(--tblr-danger);
+  color: var(--tblr-danger);
+}
+
+.selectgroup-danger .form-selectgroup-input:checked + .form-selectgroup-label .form-selectgroup-check {
+  border-color: var(--tblr-danger);
+  background-color: var(--tblr-danger);
+}

@@ -1,17 +1,15 @@
 <div class="modal-header">
-  <h4 class="modal-title">Wijzig namen</h4>
+  <h5 class="modal-title">Wijzig namen</h5>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-  <form>
-    @for (i of numberOfPlayersRange(); track i) {
-      <div class="mb-3">
-        <label attr.for="playerForm{{i + 1}}" class="col-form-label">Speler {{i + 1}}</label>
-        <input [value]="players.getPlayerName(i)" (input)="players.setPlayerName(i, $event.target.value)" type="text"  class="form-control" id="playerForm{{i + 1}}" placeholder="Naam van speler {{i + 1}}">
-      </div>
-    }
-  </form>
+  @for (i of numberOfPlayersRange(); track i) {
+    <div class="mb-3">
+      <label [attr.for]="'playerForm' + (i + 1)" class="form-label">Speler {{i + 1}}</label>
+      <input [value]="players.getPlayerName(i)" (input)="players.setPlayerName(i, $event.target.value)" type="text" class="form-control" [id]="'playerForm' + (i + 1)" [placeholder]="'Naam van speler ' + (i + 1)">
+    </div>
+  }
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Sluit</button>
+  <button type="button" class="btn btn-primary ms-auto" (click)="activeModal.close('Close click')">Sluit</button>
 </div>

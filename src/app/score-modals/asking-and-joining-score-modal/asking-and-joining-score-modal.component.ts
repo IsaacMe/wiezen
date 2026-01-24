@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {GameTypes} from '../../score/game-types.enum';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {PointsService} from '../../points.service';
@@ -12,21 +12,17 @@ import { AskingAndJoiningResult } from '../../score/game-result';
     styleUrls: ['./asking-and-joining-score-modal.component.css'],
     standalone: false
 })
-export class AskingAndJoiningScoreModalComponent implements OnInit {
+export class AskingAndJoiningScoreModalComponent {
 
   @Input() gameType: GameTypes.AskingAndJoining | GameTypes.Trull;
-  public player1: number;
-  public player2: number;
+  public selectedPlayers: number[] = [];
   public tricks: number;
 
   constructor(public activeModal: NgbActiveModal, public points: PointsService,
     private gameService: GameService, private scoreCalc: ScoreCalculatorService) { }
 
-  ngOnInit() {
-  }
-
   public addAndClose() {
-    const result = new AskingAndJoiningResult(this.player1, this.player2, this.tricks, this.gameType);
+    const result = new AskingAndJoiningResult(this.selectedPlayers[0], this.selectedPlayers[1], this.tricks, this.gameType);
     this.gameService.scoreTable.addEntry(
       this.scoreCalc.calcAskingAndJoining(result), result);
     this.activeModal.close('Saved');

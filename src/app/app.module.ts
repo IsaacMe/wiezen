@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ChangePlayersModalComponent } from './change-players-modal/change-players-modal.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { PlayerService } from './player.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActionsComponent } from './actions/actions.component';
@@ -17,6 +18,7 @@ import { PointsService } from './points.service';
 import { ScoreCalculatorService } from './score-calculator.service';
 import { AbondanceScoreModalComponent } from './score-modals/abondance-score-modal/abondance-score-modal.component';
 import { PlayerInputComponent } from './inputs/player-input/player-input.component';
+import { PlayersMultiInputComponent } from './inputs/players-multi-input/players-multi-input.component';
 import { WinLoseInputComponent } from './inputs/win-lose-input/win-lose-input.component';
 // tslint:disable-next-line:max-line-length
 import { AskingAndJoiningScoreModalComponent } from './score-modals/asking-and-joining-score-modal/asking-and-joining-score-modal.component';
@@ -32,12 +34,14 @@ import { LastGameSummaryComponent } from './last-game-summary/last-game-summary.
         AppComponent,
         NavigationComponent,
         ChangePlayersModalComponent,
+        ConfirmModalComponent,
         ActionsComponent,
         ScoreGraphComponent,
         PassingScoreModalComponent,
         ScoreInputComponent,
         AbondanceScoreModalComponent,
         PlayerInputComponent,
+        PlayersMultiInputComponent,
         WinLoseInputComponent,
         WinLoseDnpInputComponent,
         AskingAndJoiningScoreModalComponent,

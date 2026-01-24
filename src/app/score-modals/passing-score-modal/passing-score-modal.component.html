@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Passpel</h4>
+  <h5 class="modal-title">Passpel</h5>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
@@ -8,16 +8,18 @@
   }
   @if (scoreSum() != 13) {
     <div class="alert alert-danger" role="alert">
-      <strong>Totaal: </strong> {{scoreSum()}}
+      <strong>Totaal: </strong> {{ scoreSum() }}
     </div>
   }
   @if (scoreSum() == 13) {
     <div class="alert alert-success" role="alert">
-      <strong>Totaal: </strong> {{scoreSum()}}
+      <strong>Totaal: </strong> {{ scoreSum() }}
     </div>
   }
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Sluit</button>
-  <button type="button" class="btn btn-primary" [disabled]="scoreSum() != 13" (click)="addAndClose()">Voeg toe</button>
+  <button type="button" class="btn" (click)="activeModal.dismiss('Close click')">Annuleren</button>
+  <button type="button" class="btn btn-primary ms-auto" [disabled]="scoreSum() != 13" (click)="addAndClose()">
+    Voeg toe
+  </button>
 </div>

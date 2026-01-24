@@ -1,21 +1,25 @@
-<table class="table">
-  <thead>
-    <tr>
-      @for (item of players.getPlayers(); track item; let i = $index) {
-        <th [class.table-primary]="i === currentGiver" scope="col">{{item}}</th>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      @for (score of lastScores; track $index) {
-        <td>{{score}}</td>
-      }
-    </tr>
-    <tr>
-      @for (score2 of totalScores; track $index) {
-        <td [class]="{'table-success': score2 > 0, 'table-danger': score2 < 0 }">{{score2}}</td>
-      }
-    </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-vcenter card-table mb-0">
+      <thead>
+        <tr>
+          @for (item of players.getPlayers(); track item; let i = $index) {
+            <th [class.bg-primary-lt]="i === currentGiver">{{ item }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          @for (score of lastScores; track $index) {
+            <td class="text-secondary">{{ score }}</td>
+          }
+        </tr>
+        <tr class="fw-bold">
+          @for (score2 of totalScores; track $index) {
+            <td [class.text-success]="score2 > 0" [class.text-danger]="score2 < 0">{{ score2 }}</td>
+          }
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

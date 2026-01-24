@@ -1,22 +1,29 @@
-<div class="row mb-3 g-3 align-items-center">
-  <label class="col-sm-2 col-form-label">{{ title }}</label>
-  <div class="col-auto mt-0 btn-group" role="group">
-    <input 
-      [id]="generateId(true)" 
-      [name]="inputId" 
-      class="btn-check" 
-      type="radio" 
-      [value]="true" 
-      [formControl]="winControl">
-    <label [for]="generateId(true)" class="btn btn-outline-success">Winst</label>
-
-    <input 
-      [id]="generateId(false)" 
-      [name]="inputId" 
-      class="btn-check" 
-      type="radio" 
-      [value]="false" 
-      [formControl]="winControl">
-    <label [for]="generateId(false)" class="btn btn-outline-danger">Verlies</label>
+<div class="mb-3">
+  <label class="form-label">{{ title }}</label>
+  <div class="form-selectgroup form-selectgroup-boxes w-100">
+    <label class="form-selectgroup-item flex-fill selectgroup-success">
+      <input type="radio"
+        [name]="inputId"
+        [value]="true"
+        class="form-selectgroup-input"
+        [formControl]="winControl">
+      <span class="form-selectgroup-label d-flex align-items-center justify-content-center">
+        <span class="form-selectgroup-check me-2"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10"/></svg>
+        Winst
+      </span>
+    </label>
+    <label class="form-selectgroup-item flex-fill selectgroup-danger">
+      <input type="radio"
+        [name]="inputId"
+        [value]="false"
+        class="form-selectgroup-input"
+        [formControl]="winControl">
+      <span class="form-selectgroup-label d-flex align-items-center justify-content-center">
+        <span class="form-selectgroup-check me-2"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg>
+        Verlies
+      </span>
+    </label>
   </div>
 </div>
