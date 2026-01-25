@@ -27,7 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^20.0.0",
     "@tabler/core": "^1.4.0",
     "@tabler/icons": "^3.36.1",
-    "big.js": "^5.2.2",
+    "big.js": "^7.0.1",
     "bootstrap": "^5.3.8",
     "chart.js": "^2.9.1",
     "rxjs": "^6.6.7",
