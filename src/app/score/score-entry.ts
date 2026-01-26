@@ -25,7 +25,7 @@ export class ScoreEntry {
   }
 
   static fromJSON(entry: any): ScoreEntry {
-    if (!isNaN(entry.number)) {
+    if (!isNaN(entry.number) && entry.scores !== undefined && entry.result !== undefined) {
       return new ScoreEntry(Scores.fromJSON(entry.scores), GameResultfromJSON(entry.result), entry.number);
     } else {
       throw new SyntaxError('Score entry invalid');
