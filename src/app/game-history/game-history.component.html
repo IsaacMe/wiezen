@@ -1,0 +1,18 @@
+<div class="card" style="max-height: 100%;">
+    <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+        <div class="divide-y">
+            @for (scoree of reversedScoreTable; track scoree.number) {
+            <div>
+                <div class="row">
+                    <div class="col-auto">
+                            <div class="avatar  bg-gray-50 text-gray-50-fg">{{ scoree.number }}</div>
+                          </div>
+                    <div class="col m-auto">
+                        {{ resultToString(scoree.result) }}
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

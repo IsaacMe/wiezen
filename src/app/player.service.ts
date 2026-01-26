@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class PlayerService {
 
   private players: string[];
+  private colors = ['#066fd1', '#d63939', '#2fb344', '#f59f00'];
   private localStorageKey = 'players';
 
   constructor() {
@@ -31,6 +32,14 @@ export class PlayerService {
 
 
     }
+  }
+
+  public getPlayerColor(num: number): string{
+    if (num >= 0 && num < 4) {
+      return this.colors[num];
+    } else {
+      return '';
+    } 
   }
 
   /**

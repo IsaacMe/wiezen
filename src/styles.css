@@ -33,3 +33,10 @@
   border-color: var(--tblr-danger);
   background-color: var(--tblr-danger);
 }
+
+
+
+.dropdown-toggle::after {
+  border-top: 0;
+  border-right: 0;
+}

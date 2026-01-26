@@ -13,54 +13,31 @@ interface GameAction {
 }
 
 @Component({
-    selector: 'app-actions',
-    templateUrl: './actions.component.html',
-    styleUrls: ['./actions.component.css'],
-    standalone: false
+  selector: 'app-actions',
+  templateUrl: './actions.component.html',
+  styleUrls: ['./actions.component.css'],
+  standalone: false
 })
 export class ActionsComponent {
   gameActions: GameAction[] = [
-    { label: 'Solo slim', action: () => this.openAbondance(GameTypes.SoloSlim) },
-    { label: 'Solo', action: () => this.openAbondance(GameTypes.Solo) },
-    { label: 'Open Miserie', action: () => this.openMisery(GameTypes.OpenMisery) },
-    { label: 'Troel', action: () => this.openTrull() },
-    { label: 'Abondance 12', action: () => this.openAbondance(GameTypes.Abondance12) },
-    { label: 'Abondance 11', action: () => this.openAbondance(GameTypes.Abondance11) },
-    { label: 'Miserie', action: () => this.openMisery(GameTypes.Misery) },
-    { label: 'Abondance 10', action: () => this.openAbondance(GameTypes.Abondance10) },
-    { label: 'Abondance 9', action: () => this.openAbondance(GameTypes.Abondance9) },
-    { label: 'Vraag en mee', action: () => this.openAskingAndJoining() },
-    { label: 'Alleen', action: () => this.openAlone() },
-    { label: 'Passpel', action: () => this.openPassing() },
+    { label: 'Solo slim', action: () => this.openModal(GameTypes.SoloSlim, AbondanceScoreModalComponent) },
+    { label: 'Solo', action: () => this.openModal(GameTypes.Solo, AbondanceScoreModalComponent) },
+    { label: 'Open Miserie', action: () => this.openModal(GameTypes.OpenMisery, MiseryScoreModalComponent) },
+    { label: 'Troel', action: () => this.openModal(GameTypes.Trull, AskingAndJoiningScoreModalComponent) },
+    { label: 'Abondance 12', action: () => this.openModal(GameTypes.Abondance12, AbondanceScoreModalComponent) },
+    { label: 'Abondance 11', action: () => this.openModal(GameTypes.Abondance11, AbondanceScoreModalComponent) },
+    { label: 'Miserie', action: () => this.openModal(GameTypes.Misery, MiseryScoreModalComponent) },
+    { label: 'Abondance 10', action: () => this.openModal(GameTypes.Abondance10, AbondanceScoreModalComponent) },
+    { label: 'Abondance 9', action: () => this.openModal(GameTypes.Abondance9, AbondanceScoreModalComponent) },
+    { label: 'Vraag en mee', action: () => this.openModal(GameTypes.AskingAndJoining, AskingAndJoiningScoreModalComponent) },
+    { label: 'Alleen', action: () => this.openModal(GameTypes.Alone, AloneScoreModalComponent) },
+    { label: 'Passpel', action: () => this.openModal(GameTypes.Passing, PassingScoreModalComponent) },
   ];
 
   constructor(private modalService: NgbModal) { }
 
-  private openPassing(): void {
-    this.modalService.open(PassingScoreModalComponent, { size: 'lg' });
-  }
-
-  private openAbondance(gameType: GameTypes): void {
-    const modalRef = this.modalService.open(AbondanceScoreModalComponent, { size: 'lg' });
-    modalRef.componentInstance.gameType = gameType;
-  }
-
-  private openAskingAndJoining(): void {
-    const modalRef = this.modalService.open(AskingAndJoiningScoreModalComponent, { size: 'lg' });
-    modalRef.componentInstance.gameType = GameTypes.AskingAndJoining;
-  }
-
-  private openTrull(): void {
-    const modalRef = this.modalService.open(AskingAndJoiningScoreModalComponent, { size: 'lg' });
-    modalRef.componentInstance.gameType = GameTypes.Trull;
-  }
-
-  private openAlone(): void {
-    this.modalService.open(AloneScoreModalComponent, { size: 'lg' });
-  }
-
-  private openMisery(gameType: GameTypes): void {
-    const modalRef = this.modalService.open(MiseryScoreModalComponent, { size: 'lg' });
+  private openModal(gameType: GameTypes, modelCoponent: any) {
+    const modalRef = this.modalService.open(modelCoponent, { size: 'lg' });
     modalRef.componentInstance.gameType = gameType;
   }
 }

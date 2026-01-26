@@ -15,6 +15,7 @@ export class ScoreCurrentTableComponent implements OnInit, OnDestroy {
   lastScores: Big[] = [];
   round: number = 0;
   currentGiver: number = 0;
+  playerColors = ['bg-blue', 'bg-red', 'bg-green', 'bg-yellow']
 
   private subscription: Subscription | null = null;
 
