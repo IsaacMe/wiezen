@@ -1,7 +1,7 @@
 <div class="row row-deck row-cards">
 
   @for (item of players.getPlayers(); track item; let i = $index) {
-  <div class="col-sm-3">
+  <div class="col-6 col-sm-3">
     <div class="card">
             <div class="card-status-top" [class]="playerColors[i]"></div>
       @if (i === currentGiver) {

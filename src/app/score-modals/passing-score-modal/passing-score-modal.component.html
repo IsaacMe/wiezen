@@ -3,18 +3,11 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
+  <div class="alert" [class.alert-danger]="scoreSum() != 13" [class.alert-success]="scoreSum() == 13" role="alert">
+    <strong>Totaal: </strong> {{ scoreSum() }}
+  </div>
   @for (player of players; track player; let i = $index) {
-    <app-score-input [title]="player" [(score)]="scores[i]"></app-score-input>
-  }
-  @if (scoreSum() != 13) {
-    <div class="alert alert-danger" role="alert">
-      <strong>Totaal: </strong> {{ scoreSum() }}
-    </div>
-  }
-  @if (scoreSum() == 13) {
-    <div class="alert alert-success" role="alert">
-      <strong>Totaal: </strong> {{ scoreSum() }}
-    </div>
+  <app-score-input [title]="player" [(score)]="scores[i]"></app-score-input>
   }
 </div>
 <div class="modal-footer">

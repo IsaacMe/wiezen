@@ -1,6 +1,6 @@
 <div class="row mb-3 g-3 align-items-center">
   <label class="col-sm-2 col-form-label">{{ title }}</label>
-  <div class="col-auto mt-0 btn-group" role="group">
+  <div class="col-auto mt-0 btn-group w-100" role="group">
     @for (val of values; track trackByValue($index, val)) {
       <input
         [id]="generateId(val)"
@@ -13,7 +13,6 @@
         [for]="generateId(val)"
         class="btn"
         [ngClass]="{
-          'btn-outline-primary': positiveScore === undefined,
           'btn-outline-success': val >= positiveScore,
           'btn-outline-danger': val < positiveScore
         }">
