@@ -1,29 +1,80 @@
-<nav class="navbar navbar-fixed-top navbar-expand-sm navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Wiezen</a>
+<header class="navbar navbar-expand-md d-print-none">
+  <div class="container-xl">
     <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed"
-      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-      aria-label="Toggle navigation">
+      aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+      <a href="#">Wiezen</a>
+    </h1>
+    <div class="order-md-last">
+      <div class="nav-item" ngbDropdown>
+        <button class="btn btn-primary btn-animate-icon btn-animate-icon-rotate" ngbDropdownToggle>
+          <!-- Download SVG icon from http://tabler.io/icons/icon/plus -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-1">
+            <path d="M12 5l0 14"></path>
+            <path d="M5 12l14 0"></path>
+          </svg>
+          <span class="d-none d-sm-inline-block">Voeg ronde toe</span><span class="d-sm-none">Ronde</span>
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          @for (game of gameActions; track game.label) {
+          <button ngbDropdownItem (click)="game.action()">
+            {{ game.label }}
+          </button>
+          }
+        </div>
 
-    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </div>
+    </div>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <button class="btn btn-link nav-link" (click)="startNewGame()">Nieuw spel</button>
+          <a class="nav-link btn-animate-icon btn-animate-icon-rotate" role="button" tabindex="0" (click)="startNewGame()">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+                <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+              </svg>
+            </span>
+            <span class="nav-link-title">Nieuw spel</span>
+          </a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-link nav-link" (click)="openChangeNames()">Wijzig spelers</button>
+          <a class="nav-link" role="button" tabindex="0" (click)="openChangeNames()">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+              </svg>
+            </span>
+            <span class="nav-link-title">Wijzig spelers</span>
+          </a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-link nav-link" (click)="undoLast()">Verwijder laatste ronde</button>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="https://isaacmeers.be">By: Isaac Meers</a>
+          <a class="nav-link" role="button" tabindex="0" (click)="undoLast()">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 7l16 0" />
+                <path d="M10 11l0 6" />
+                <path d="M14 11l0 6" />
+                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+              </svg>
+            </span>
+            <span class="nav-link-title">Verwijder laatste</span>
+          </a>
         </li>
       </ul>
     </div>
   </div>
-</nav>
+</header>

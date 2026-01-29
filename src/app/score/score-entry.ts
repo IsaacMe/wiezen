@@ -1,19 +1,19 @@
-import {GameTypes} from './game-types.enum';
+import { GameResult, GameResultfromJSON } from './game-result';
 import {Scores} from './scores';
 
 export class ScoreEntry {
   private _scores: Scores;
-  private _game: GameTypes;
+  private _result: GameResult;
   private _number: number;
 
-  constructor(scores: Scores, game: GameTypes, number: number) {
+  constructor(scores: Scores, result: GameResult, number: number) {
     this._scores = scores;
-    this._game = game;
+    this._result = result;
     this._number = number;
   }
 
-  get game(): GameTypes {
-    return this._game;
+  get result(): GameResult {
+    return this._result;
   }
 
   get number(): number {
@@ -25,14 +25,14 @@ export class ScoreEntry {
   }
 
   static fromJSON(entry: any): ScoreEntry {
-    if (entry.game in GameTypes && !isNaN(entry.number)) {
-      return new ScoreEntry(Scores.fromJSON(entry.scores), entry.game, entry.number);
+    if (!isNaN(entry.number) && entry.scores !== undefined && entry.result !== undefined) {
+      return new ScoreEntry(Scores.fromJSON(entry.scores), GameResultfromJSON(entry.result), entry.number);
     } else {
       throw new SyntaxError('Score entry invalid');
     }
   }
 
   public toJSON(): any {
-    return { scores: this._scores, game: this._game, number: this._number};
+    return { scores: this._scores, result: this._result, number: this._number};
   }
 }

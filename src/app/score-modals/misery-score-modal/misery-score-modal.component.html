@@ -1,11 +1,15 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{gameName}}</h4>
+  <h5 class="modal-title">{{ gameName }}</h5>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-    <app-win-lose-dnp-input *ngFor="let item of players.getPlayers(); let i = index;" [title]="item" [(win)]="wins[i]"></app-win-lose-dnp-input>
+  @for (item of players.getPlayers(); track item; let i = $index) {
+    <app-win-lose-dnp-input [title]="item" [(win)]="wins[i]"></app-win-lose-dnp-input>
+  }
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Sluit</button>
-  <button type="button" class="btn btn-primary" [disabled]="!inputIsValid()" (click)="addAndClose()">Voeg toe</button>
+  <button type="button" class="btn" (click)="activeModal.dismiss('Close click')">Annuleren</button>
+  <button type="button" class="btn btn-primary ms-auto" [disabled]="!inputIsValid()" (click)="addAndClose()">
+    Voeg toe
+  </button>
 </div>

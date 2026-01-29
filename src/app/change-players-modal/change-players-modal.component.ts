@@ -3,9 +3,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlayerService } from '../player.service';
 
 @Component({
-  selector: 'app-change-players-modal',
-  templateUrl: './change-players-modal.component.html',
-  styleUrls: ['./change-players-modal.component.css']
+    selector: 'app-change-players-modal',
+    templateUrl: './change-players-modal.component.html',
+    styleUrls: ['./change-players-modal.component.css'],
+    standalone: false
 })
 export class ChangePlayersModalComponent implements OnInit {
 

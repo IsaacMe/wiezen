@@ -1,13 +1,14 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{gameName}}</h4>
+  <h5 class="modal-title">{{ gameName }}</h5>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-  <app-player-input title="Speler 1" [(player)]="player1" [disablePlayer]="player2"></app-player-input>
-  <app-player-input title="Speler 2" [(player)]="player2" [disablePlayer]="player1"></app-player-input>
+  <app-players-multi-input title="Selecteer 2 spelers" [(selectedPlayers)]="selectedPlayers"></app-players-multi-input>
   <app-score-input title="Slagen" [(score)]="tricks" [positiveScore]="points.getPoints(gameType).tricks"></app-score-input>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Close click')">Sluit</button>
-  <button type="button" class="btn btn-primary" [disabled]="player1 == undefined || player2 == undefined || tricks == undefined" (click)="addAndClose()">Voeg toe</button>
+  <button type="button" class="btn" (click)="activeModal.dismiss('Close click')">Annuleren</button>
+  <button type="button" class="btn btn-primary ms-auto" [disabled]="selectedPlayers.length !== 2 || tricks == undefined" (click)="addAndClose()">
+    Voeg toe
+  </button>
 </div>

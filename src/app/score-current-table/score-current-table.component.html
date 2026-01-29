@@ -1,15 +1,29 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th *ngFor="let item of players.getPlayers(); let i = index;" scope="col">{{item}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td *ngFor="let score of getLastScores();">{{score}}</td>
-      </tr>
-      <tr>
-        <td *ngFor="let score of getTotalScores();" [ngClass]="{'table-success': score > 0, 'table-danger': score < 0 }">{{score}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row row-deck row-cards">
+
+  @for (item of players.getPlayers(); track item; let i = $index) {
+  <div class="col-6 col-sm-3">
+    <div class="card">
+            <div class="card-status-top" [class]="playerColors[i]"></div>
+      @if (i === currentGiver) {
+      <div class="ribbon ribbon-top bg-yellow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-play-card-star"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 5v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2" /><path d="M8 6h.01" /><path d="M16 18h.01" /><path d="M11.75 14.112l-1.63 .853a.294 .294 0 0 1 -.425 -.307l.31 -1.808l-1.317 -1.28a.292 .292 0 0 1 .163 -.499l1.82 -.264l.815 -1.644a.294 .294 0 0 1 .527 0l.814 1.644l1.82 .264a.292 .292 0 0 1 .164 .499l-1.318 1.28l.31 1.807a.292 .292 0 0 1 -.425 .308l-1.628 -.853" /></svg>
+      </div>
+      }
+      <div class="card-body">
+        <div class="subheader">
+          {{ item }}
+        </div>
+        <div class="d-flex align-items-baseline">
+          <div class="h1 mb-0 me-2" [class.text-green]="totalScores[i] > 0" [class.text-red]="totalScores[i] < 0">{{ totalScores[i] }}</div>
+          <div class="me-auto">
+            <span [class.bg-green-lt]="lastScores[i] > 0" [class.bg-red-lt]="lastScores[i] < 0"
+              class="badge d-inline-flex align-items-center lh-1">
+              {{ (lastScores[i] >= 0) ? "+" : ""}}{{ lastScores[i] }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

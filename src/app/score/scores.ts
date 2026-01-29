@@ -1,70 +1,94 @@
 import Big from 'big.js';
 
 export class Scores {
-  player1: Big;
-  player2: Big;
-  player3: Big;
-  player4: Big;
+  private readonly scores: Big[];
 
-  static fromJSON(scores: any): Scores {
-    if (!isNaN(scores.player1) && !isNaN(scores.player2) && !isNaN(scores.player3) && !isNaN(scores.player4)) {
-      return new Scores(new Big(scores.player1), new Big(scores.player2), new Big(scores.player3), new Big(scores.player4));
+  /**
+   * Create a new Scores instance.
+   * @param values Optional array of 4 Big values, or 4 individual Big parameters
+   */
+  constructor(values?: Big[] | Big, p2?: Big, p3?: Big, p4?: Big) {
+    if (Array.isArray(values)) {
+      if (values.length !== 4) {
+        throw new Error('Scores array must have exactly 4 elements');
+      }
+      this.scores = [...values];
+    } else if (values !== undefined) {
+      // Legacy constructor: 4 individual parameters
+      this.scores = [
+        values,
+        p2 ?? new Big(0),
+        p3 ?? new Big(0),
+        p4 ?? new Big(0)
+      ];
     } else {
-      throw new SyntaxError('Scores array invalid');
+      // Default: all zeros
+      this.scores = [new Big(0), new Big(0), new Big(0), new Big(0)];
     }
   }
 
-  constructor(player1?: Big, player2?: Big, player3?: Big, player4?: Big) {
-    if (player1) {
-      this.player1 = player1;
-    } else {
-      this.player1 = new Big(0);
+  /**
+   * Deserialize from JSON. Supports both legacy format (player1-4) and new format (scores array).
+   */
+  static fromJSON(data: any): Scores {
+    // Support legacy format with player1, player2, player3, player4
+    if ('player1' in data) {
+      if (isNaN(data.player1) || isNaN(data.player2) || isNaN(data.player3) || isNaN(data.player4)) {
+        throw new SyntaxError('Scores array invalid');
+      }
+      return new Scores([
+        new Big(data.player1),
+        new Big(data.player2),
+        new Big(data.player3),
+        new Big(data.player4)
+      ]);
     }
 
-    if (player2) {
-      this.player2 = player2;
-    } else {
-      this.player2 = new Big(0);
+    // New format with scores array
+    if (Array.isArray(data.scores) && data.scores.length === 4) {
+      return new Scores(data.scores.map((v: any) => new Big(v)));
     }
 
-    if (player3) {
-      this.player3 = player3;
-    } else {
-      this.player3 = new Big(0);
-    }
-
-    if (player4) {
-      this.player4 = player4;
-    } else {
-      this.player4 = new Big(0);
-    }
+    throw new SyntaxError('Scores array invalid');
   }
 
+  /**
+   * Get a copy of all scores as an array.
+   */
   public getArray(): Big[] {
-    return [this.player1, this.player2, this.player3, this.player4];
+    return [...this.scores];
   }
 
+  /**
+   * Set score for a player (1-based index for API compatibility).
+   * @param player Player number (1-4)
+   * @param score The score to set
+   */
   public setScore(player: number, score: Big): void {
-    if (player === 1) {
-      this.player1 = score;
-    } else if (player === 2) {
-      this.player2 = score;
-    } else if (player === 3) {
-      this.player3 = score;
-    } else if (player === 4) {
-      this.player4 = score;
+    if (player < 1 || player > 4) {
+      throw new Error(`Invalid player number: ${player}. Must be 1-4.`);
     }
+    this.scores[player - 1] = score;
   }
 
+  /**
+   * Get score for a player (1-based index for API compatibility).
+   * @param player Player number (1-4)
+   * @returns The player's score
+   */
   public getScore(player: number): Big {
-    if (player === 1) {
-      return this.player1;
-    } else if (player === 2) {
-      return this.player2;
-    } else if (player === 3) {
-      return this.player3;
-    } else if (player === 4) {
-      return this.player4;
+    if (player < 1 || player > 4) {
+      throw new Error(`Invalid player number: ${player}. Must be 1-4.`);
     }
+    return this.scores[player - 1];
+  }
+
+  /**
+   * Serialize to JSON. Uses new array format.
+   */
+  public toJSON(): { scores: string[] } {
+    return {
+      scores: this.scores.map(s => s.toString())
+    };
   }
 }

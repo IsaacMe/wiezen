@@ -6,11 +6,13 @@ import {GameTypes} from '../../score/game-types.enum';
 import {PlayerService} from '../../player.service';
 import {ScoreCalculatorService} from '../../score-calculator.service';
 import Big from 'big.js';
+import { PassingResult } from '../../score/game-result';
 
 @Component({
-  selector: 'app-passing-score-modal',
-  templateUrl: './passing-score-modal.component.html',
-  styleUrls: ['./passing-score-modal.component.css']
+    selector: 'app-passing-score-modal',
+    templateUrl: './passing-score-modal.component.html',
+    styleUrls: ['./passing-score-modal.component.css'],
+    standalone: false
 })
 export class PassingScoreModalComponent implements OnInit {
 
@@ -27,7 +29,8 @@ export class PassingScoreModalComponent implements OnInit {
 
   public addAndClose() {
     const score = new Scores(new Big(this.scores[0]), new Big(this.scores[1]), new Big(this.scores[2]), new Big(this.scores[3]));
-    this.gameService.scoreTable.addEntry(this.scoreCalc.calcPassing(score), GameTypes.Passing);
+    const result = new PassingResult(score);
+    this.gameService.scoreTable.addEntry(this.scoreCalc.calcPassing(result), result);
     this.activeModal.close('Saved');
   }
 

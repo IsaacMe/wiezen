@@ -3,13 +3,13 @@
   <div class="form-selectgroup form-selectgroup-boxes w-100">
     @for (player of playersList; track $index; let i = $index) {
       <label class="form-selectgroup-item flex-fill">
-        <input type="radio"
+        <input type="checkbox"
           [name]="inputId"
           [value]="i + 1"
           class="form-selectgroup-input"
-          [formControl]="playerControl"
-          [attr.disabled]="disablePlayer === i + 1 ? true : null">
-        <span class="form-selectgroup-label d-flex align-items-center">
+          [checked]="isSelected(i + 1)"
+          (change)="togglePlayer(i + 1)">
+        <span class="form-selectgroup-label d-flex align-items-center justify-content-center">
           <span class="form-selectgroup-check me-2"></span>
           <span>{{ player }}</span>
         </span>
